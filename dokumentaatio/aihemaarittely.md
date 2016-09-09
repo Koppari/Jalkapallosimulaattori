@@ -1,0 +1,13 @@
+**Aihe:** Jalkapallosimulaattori
+Ohjelmassa valitaan ohjelman luomia satunnaisilla attribuuteilla varustettuja (tai sitten valmiiksi luoduilla) pelaajia jalkapallojoukkueeseen. Tämä joukkue sitten laitetaan toista pelaajien attribuuttien tasoa vastaavaa tietokonejoukkuetta vastaan. Ohjelma käy sitten pelin läpi tärkeästä tapahtumasta toiseen. 
+
+**Käyttäjät:** Simulaation seuraaja/pelaaja
+
+**Käyttäjän toiminnot:** 
+- uuden pelin aloittaminen
+- joukkueen tietojen luonti
+- pelaajien valinta
+- pelin sammuttaminen
+
+
+
