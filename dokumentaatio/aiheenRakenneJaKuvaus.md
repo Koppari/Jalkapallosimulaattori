@@ -1,1 +1,1 @@
-![Luokkakaavio](dokumentaatio/ekaluokkakaavio.png)
+![Luokkakaavio](http://i.imgur.com/ZuqHnAq.png)
