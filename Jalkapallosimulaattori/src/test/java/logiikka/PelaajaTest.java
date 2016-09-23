@@ -48,7 +48,7 @@ public class PelaajaTest {
 
     @Test
     public void toStringToimii() {
-        assertEquals(p.toString(), p.getNimi() + ", tyyppi: " + p.getTyyppi() + "\nNopeus: " + p.getNopeus() + "\nPuolustaminen: " + p.getPuolustaminen() + "\nTekniikka: " + p.getTekniikka() + "\nVoima: " + p.getVoima() + "\nKokonais: " + p.getKokonaisAttribuutit());
+        assertEquals(p.toString(), p.getNimi() + ", " + p.getRooli());
     }
 
 }

@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Joukkue {
 
     // joukkue koostuu pelaajista
-    private ArrayList<Pelaaja> pelaajat = new ArrayList();
+    protected ArrayList<Pelaaja> pelaajat = new ArrayList();
+    protected int joukkueenVoima = 0;
 
     public Joukkue() {
     }
@@ -23,7 +24,7 @@ public class Joukkue {
             pelaajat.add(new Pelaaja(3));
         }
     }
-    
+
     public void poistaPelaajat() {
         pelaajat.clear();
     }
@@ -40,20 +41,25 @@ public class Joukkue {
 
     public int kokonaisAttribuutit() {
         int joukkueenVoima = 0;
-        
+
         for (Pelaaja p : this.pelaajat) {
             joukkueenVoima = joukkueenVoima + p.getKokonaisAttribuutit();
         }
-        
+
         if (joukkueenVoima < 0) {
             joukkueenVoima = 0;
         }
-        
+
+        this.joukkueenVoima = joukkueenVoima;
         return joukkueenVoima;
+    }
+
+    public void setJoukkueenVoima(int joukkueenVoima) {
+        this.joukkueenVoima = joukkueenVoima;
     }
 
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
-    }  
-  
+    }
+
 }

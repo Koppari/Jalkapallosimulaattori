@@ -17,6 +17,7 @@ public class Pelaaja {
     //pelaajien attribuutit
     private int nopeus, tekniikka, puolustaminen, voima;
     private int kokonaisAttribuutit;
+    private String rooli;
 
     //nimiä pelaajille, väliaikainen
     String[] names = {"Joni", "Petteri", "Jorma", "Mauri", "Jaakko", "Aatu", "Akseli", "Olavi", "Kalevi", "Paavo", "Roope"};
@@ -59,6 +60,7 @@ public class Pelaaja {
             this.setPuolustaminen(random.nextInt(20) + 80);
             this.setVoima(random.nextInt(30));
             kokonaisAttribuutit = nopeus + puolustaminen + tekniikka + voima;
+            rooli = "maalivahti";
         }
 
         if (tyyppi == 1) {
@@ -67,6 +69,7 @@ public class Pelaaja {
             this.setPuolustaminen(random.nextInt(40) + 60);
             this.setVoima(random.nextInt(50) + 50);
             kokonaisAttribuutit = nopeus + puolustaminen + tekniikka + voima;
+            rooli = "puolustaja";
         }
 
         if (tyyppi == 2) {
@@ -75,6 +78,7 @@ public class Pelaaja {
             this.setPuolustaminen(random.nextInt(35) + 10);
             this.setVoima(random.nextInt(35) + 10);
             kokonaisAttribuutit = nopeus + puolustaminen + tekniikka + voima;
+            rooli = "keskikenttä";
         }
 
         if (tyyppi == 3) {
@@ -83,10 +87,15 @@ public class Pelaaja {
             this.setPuolustaminen(random.nextInt(5));
             this.setVoima(random.nextInt(50));
             kokonaisAttribuutit = nopeus + puolustaminen + tekniikka + voima;
+            rooli = "hyökkääjä";
         }
     }
 
     public String toString() {
+        return nimi + ", " + rooli;
+    }
+
+    public String printAttribuutit() {
         return nimi + ", tyyppi: " + tyyppi + "\nNopeus: " + nopeus + "\nPuolustaminen: " + puolustaminen + "\nTekniikka: " + tekniikka + "\nVoima: " + voima + "\nKokonais: " + kokonaisAttribuutit;
     }
 
@@ -142,6 +151,14 @@ public class Pelaaja {
 
     public int getKokonaisAttribuutit() {
         return kokonaisAttribuutit;
+    }
+
+    public String getRooli() {
+        return rooli;
+    }
+
+    public void setRooli(String rooli) {
+        this.rooli = rooli;
     }
 
     //lisäys: muuttaa myös attribuutteja

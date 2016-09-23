@@ -5,4 +5,6 @@ Päivä | Tunnit | Kuvaus
 09.09.2016 | 2h | Ensimmäisen viikon tehtävien tekoa
 15.09.2016 | 2h | Toisen viikon tehtävien tekoa
 16.09.2016 | 2h | Toisen viikon tehtävien tekoa
+22.09.2016 | 1h | Kolmannen viikon tehtävien tekoa
+23.09.2016 | 3h | Kolmannen viikon tehtävien tekoa
 
