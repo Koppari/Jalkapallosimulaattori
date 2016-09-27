@@ -20,24 +20,14 @@ public class Pelaaja {
     private String rooli;
 
     //nimiä pelaajille, väliaikainen
-    String[] names = {"Joni", "Petteri", "Jorma", "Mauri", "Jaakko", "Aatu", "Akseli", "Olavi", "Kalevi", "Paavo", "Roope"};
+    private static String[] names = {"Joni", "Petteri", "Jorma", "Mauri", "Jaakko", "Aatu", "Akseli", "Olavi", "Kalevi", "Paavo", "Roope"};
 
     public Pelaaja() {
-        this.id = uid.getAndIncrement();
-        this.nimi = names[random.nextInt(10)];
-        this.tyyppi = random.nextInt(4);
-        attribuutit();
+        this(random.nextInt(4));
     }
 
     public Pelaaja(int tyyppi) {
-        this.id = uid.getAndIncrement();
-        this.nimi = names[random.nextInt(10)];
-        if (tyyppi < 4 && tyyppi >= 0) {
-            this.tyyppi = tyyppi;
-        } else {
-            this.tyyppi = random.nextInt(4);
-        }
-        attribuutit();
+        this(names[random.nextInt(10)], random.nextInt(4));
     }
 
     public Pelaaja(String nimi, int tyyppi) {
@@ -100,7 +90,6 @@ public class Pelaaja {
     }
 
     //getterit ja setterit
-    //pitää laittaa settereille 0 tai 100 välille check?
     public int getId() {
         return id;
     }

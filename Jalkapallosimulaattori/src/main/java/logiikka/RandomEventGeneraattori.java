@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class RandomEventGeneraattori {
 
-    // eri random eventtejä peliin
     private static Random r = new Random();
 
     public RandomEventGeneraattori() {
@@ -40,7 +39,10 @@ public class RandomEventGeneraattori {
         if (j.pelaajat.isEmpty()) {
             return null;
         }
+        
+        
         return j.pelaajat.get(r.nextInt(j.pelaajat.size()));
     }
-
+    
+    
 }
