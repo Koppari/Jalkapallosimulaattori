@@ -1,5 +1,5 @@
 **Aihe:** Jalkapallosimulaattori
-Ohjelmassa valitaan ohjelman luomia satunnaisilla attribuuteilla varustettuja (tai sitten valmiiksi luotuja?) pelaajia jalkapallojoukkueeseen. Tämä joukkue sitten laitetaan toista pelaajien attribuuttien tasoa vastaavaa tietokonejoukkuetta vastaan. Ohjelma käy sitten pelin läpi tärkeästä tapahtumasta toiseen satunnaisen event-generatorin (jonka tapahtumat riippuvat pelaajien/tiimin attrbuuteista) avulla.
+Ohjelmassa valitaan ohjelman luomia satunnaisilla attribuuteilla varustettuja pelaajia jalkapallojoukkueeseen. Tämä joukkue sitten laitetaan toista pelaajien attribuuttien tasoa vastaavaa tietokonejoukkuetta vastaan. Ohjelma käy sitten pelin läpi tärkeästä tapahtumasta toiseen satunnaisen event-generatorin (jonka tapahtumat riippuvat pelaajien/tiimin attrbuuteista) avulla.
 
 **Käyttäjät:** Simulaation seuraaja/pelaaja
 
@@ -9,6 +9,6 @@ Ohjelmassa valitaan ohjelman luomia satunnaisilla attribuuteilla varustettuja (t
 - pelaajien valinta
 - pelin sammuttaminen
 
-![Luokkakaavio](http://i.imgur.com/si8vjQH.png)
+![Luokkakaavio](https://github.com/Koppari/Jalkapallosimulaattori/blob/master/dokumentaatio/lkaavio.png?raw=true)
 
 - luokan RandomEventGeneraattori metodeissa viitataan myös suoraan Joukkue- ja Pelaaja-luokkiin

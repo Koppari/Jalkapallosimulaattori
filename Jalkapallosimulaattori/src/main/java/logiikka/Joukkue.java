@@ -2,17 +2,28 @@ package logiikka;
 
 import java.util.ArrayList;
 
+/**
+ * Luokka peleissä pelaaville joukkueille.
+ */
 public class Joukkue {
 
     // joukkue koostuu pelaajista
     protected ArrayList<Pelaaja> pelaajat = new ArrayList();
     protected int joukkueenVoima = 0;
+    protected String nimi;
 
     public Joukkue() {
     }
 
-    //lisää maalivahdin, 4 puolustajaa, 4 keskikenttää ja 2 hyökkääjää
-    public void lisaaPelaajat() {
+    public Joukkue(String nimi) {
+        this.nimi = nimi;
+    }
+
+    /**
+     * Luo joukkueelle 11 pelaajaa satunnaisilla attribuuteilla.
+     * 
+     */
+    public void luoJoukkue() {
         pelaajat.add(new Pelaaja(0));
         for (int i = 1; i <= 4; i++) {
             pelaajat.add(new Pelaaja(1));
@@ -23,24 +34,6 @@ public class Joukkue {
         for (int i = 1; i <= 2; i++) {
             pelaajat.add(new Pelaaja(3));
         }
-    }
-
-    public void poistaPelaajat() {
-        pelaajat.clear();
-    }
-
-    public void printPelaajat() {
-        for (Pelaaja p : this.pelaajat) {
-            System.out.println(p.toString());
-            System.out.println("");
-        }
-        if (this.pelaajat == null) {
-            System.out.println("Joukkueessa ei ole pelaajia!");
-        }
-    }
-
-    public int kokonaisAttribuutit() {
-        int joukkueenVoima = 0;
 
         for (Pelaaja p : this.pelaajat) {
             joukkueenVoima = joukkueenVoima + p.getKokonaisAttribuutit();
@@ -50,8 +43,21 @@ public class Joukkue {
             joukkueenVoima = 0;
         }
 
-        this.joukkueenVoima = joukkueenVoima;
-        return joukkueenVoima;
+    }
+
+    public void poistaPelaajat() {
+        pelaajat.clear();
+    }
+
+    public String printPelaajat() {
+        String s = "";
+        for (Pelaaja p : this.pelaajat) {
+            s = s + p.toString() + "\n";
+        }
+        if (this.pelaajat == null) {
+            return null;
+        }
+        return s;
     }
 
     public void setJoukkueenVoima(int joukkueenVoima) {
@@ -60,6 +66,18 @@ public class Joukkue {
 
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
+    }
+
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public int getJoukkueenVoima() {
+        return joukkueenVoima;
     }
 
 }

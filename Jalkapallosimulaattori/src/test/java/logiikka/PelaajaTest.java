@@ -28,7 +28,7 @@ public class PelaajaTest {
 
     @Test
     public void konstruktoriNimiJaTyyppiParametrilla() {
-        p = new Pelaaja("Make", 1);
+        Pelaaja p = new Pelaaja("Make", 1);
         assertEquals(p.getNimi(), "Make");
         assertEquals(p.getTyyppi(), 1);
     }

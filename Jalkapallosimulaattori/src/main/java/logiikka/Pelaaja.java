@@ -3,6 +3,9 @@ package logiikka;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Luokka joukkueiden pelaajille.
+ */
 public class Pelaaja {
 
     //luodaan uniikki id- ja random-oliot
@@ -27,7 +30,7 @@ public class Pelaaja {
     }
 
     public Pelaaja(int tyyppi) {
-        this(names[random.nextInt(10)], random.nextInt(4));
+        this(names[random.nextInt(10)], tyyppi);
     }
 
     public Pelaaja(String nimi, int tyyppi) {
@@ -41,7 +44,11 @@ public class Pelaaja {
         attribuutit();
     }
 
-    //metodi arpoo pelaajalle attribuutit riippuen pelaajan tyypistä
+    /**
+     * Metodi arpoo joukkueen pelaajille attribuutit.
+     * 
+     *
+     */
     public void attribuutit() {
 
         if (tyyppi == 0) {
@@ -85,6 +92,12 @@ public class Pelaaja {
         return nimi + ", " + rooli;
     }
 
+    /**
+     * Listaa pelaajan attribuutit ja tiedot.
+     * 
+     *
+     * @return Pelaajan attribuutit listana.
+     */
     public String printAttribuutit() {
         return nimi + ", tyyppi: " + tyyppi + "\nNopeus: " + nopeus + "\nPuolustaminen: " + puolustaminen + "\nTekniikka: " + tekniikka + "\nVoima: " + voima + "\nKokonais: " + kokonaisAttribuutit;
     }

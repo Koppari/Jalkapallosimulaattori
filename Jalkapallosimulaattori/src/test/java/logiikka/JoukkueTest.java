@@ -17,19 +17,31 @@ public class JoukkueTest {
     
     @Test
     public void luoYksitoistaPelaajaa() {
-        j.lisaaPelaajat();
+        j.luoJoukkue();
         assertEquals(j.getPelaajat().size(), 11);
     }
     
     @Test
     public void joukkueenVoimaEiNegatiivinen() {
-        assertTrue(0 <= j.kokonaisAttribuutit());
+        assertTrue(0 <= j.getJoukkueenVoima());
+    }
+    
+    @Test
+    public void setVoimaToimii() {
+        j.setJoukkueenVoima(1200);
+        assertEquals(j.getJoukkueenVoima(), 1200);
+    }
+    
+    @Test
+    public void printPelaajatPalauttaaOikeinJosNull() {
+        j.poistaPelaajat();
+        assertEquals(j.printPelaajat(), "");
     }
     
     @Test
     public void poistaPelaajatToimii() {
         j.poistaPelaajat();
-        assertEquals(j.kokonaisAttribuutit(), 0);
+        assertEquals(j.getJoukkueenVoima(), 0);
     }
 
 }

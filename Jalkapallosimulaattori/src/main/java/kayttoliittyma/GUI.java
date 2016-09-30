@@ -1,50 +1,67 @@
 package kayttoliittyma;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
+import logiikka.Peli;
 
-public class GUI extends JFrame {
+/**
+ * Käyttöliittymä ohjelmalle.
+ */
+public class GUI extends JPanel implements ActionListener {
 
-    private static final int LEVEYS = 800;
-    private static final int KORKEUS = 600;
+    protected JButton aloitus;
+    protected JTextArea eventit;
+    private final static String N = "\n";
+    private Peli peli;
 
-    public void luoGUI() {
-        this.setLayout(new BorderLayout());
-        this.setTitle("Jalkapallosimulaattori");
-        this.setSize(LEVEYS, KORKEUS);
-        this.setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setResizable(false);
+    public GUI(Peli p) {
+        super(new GridBagLayout());
+        this.setPreferredSize(new Dimension(800, 600));
 
-        //vasen panel, tähän eventit
-        JPanel vasenPanel = new JPanel(new BorderLayout());
-        vasenPanel.setSize(400, 572);
-        vasenPanel.setBackground(new Color(100, 100, 100));
-        vasenPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        
-        JButton aloitus = new JButton("Aloita");
-        vasenPanel.add(aloitus, BorderLayout.SOUTH);
-        
-        JLabel eventit = new JLabel();
-        eventit.setText("Paska");
-        vasenPanel.add(eventit, BorderLayout.NORTH);
-        
-        this.add(vasenPanel);
+        aloitus = new JButton("Matsin generointi");
+        aloitus.addActionListener(this);
 
-        //oikea panel, tähän näkyviin kenttä
-        JPanel oikeaPanel = new JPanel(new BorderLayout());
-        oikeaPanel.setSize(400, 600);
-        oikeaPanel.setBackground(new Color(103, 184, 104));
-        oikeaPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        eventit = new JTextArea(5, 20);
+        eventit.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(eventit);
 
-        this.add(oikeaPanel);
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridwidth = GridBagConstraints.REMAINDER;
 
+        c.fill = GridBagConstraints.HORIZONTAL;
+        add(aloitus, c);
+
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        add(scrollPane, c);
+
+        this.peli = p;
     }
 
-    public static void main(String[] args) {
-        GUI gui = new GUI();
-        gui.luoGUI();
+    GUI() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void actionPerformed(ActionEvent evt) {
+        Object src = evt.getSource();
+
+        peli.tiimienLuonti("A", "B");
+        peli.matsinGenerointi(peli.x, peli.y);
+        eventit.append(peli.matsinLuku() + "\n");
+
+        eventit.setCaretPosition(eventit.getDocument().getLength());
+    }
+
+    public static void framenLuonti(GUI gui) {
+        JFrame kehys = new JFrame("Jalkapallosimulaattori");
+        kehys.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        kehys.add(gui);
+
+        kehys.pack();
+        kehys.setVisible(true);
     }
 
 }
