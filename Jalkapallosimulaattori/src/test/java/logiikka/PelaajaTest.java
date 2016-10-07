@@ -45,6 +45,17 @@ public class PelaajaTest {
         Pelaaja p = new Pelaaja(6);
         assertTrue(p.getTyyppi() != 6);
     }
+    
+    @Test 
+    public void attribuutitAntavatOikeat() {
+        Pelaaja p = new Pelaaja(0);
+        Pelaaja p2 = new Pelaaja(0);
+        Pelaaja p3 = new Pelaaja(0);
+        assertTrue(p.getPuolustaminen()>80);
+        assertTrue(p2.getPuolustaminen()>80);
+        assertTrue(p3.getPuolustaminen()>80);
+        assertEquals(p.getRooli(), "maalivahti");
+    }
 
     @Test
     public void toStringToimii() {

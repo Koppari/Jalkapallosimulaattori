@@ -21,7 +21,7 @@ public class Joukkue {
 
     /**
      * Luo joukkueelle 11 pelaajaa satunnaisilla attribuuteilla.
-     * 
+     *
      */
     public void luoJoukkue() {
         pelaajat.add(new Pelaaja(0));
@@ -35,9 +35,7 @@ public class Joukkue {
             pelaajat.add(new Pelaaja(3));
         }
 
-        for (Pelaaja p : this.pelaajat) {
-            joukkueenVoima = joukkueenVoima + p.getKokonaisAttribuutit();
-        }
+        joukkueenVoimaLasku();
 
         if (joukkueenVoima < 0) {
             joukkueenVoima = 0;
@@ -45,19 +43,36 @@ public class Joukkue {
 
     }
 
+    /**
+     * Poistaa joukkueen pelaajat.
+     */
     public void poistaPelaajat() {
         pelaajat.clear();
-    }
-
+    }   
+    
+    /**
+     * Printtaa joukkueen pelaajien attribuutit "korttimaisesti."
+     * @return Pelaajien attribuutit.
+     */
     public String printPelaajat() {
         String s = "";
         for (Pelaaja p : this.pelaajat) {
-            s = s + p.toString() + "\n";
+            s = s + p.printAttribuutit() + "\n";
         }
         if (this.pelaajat == null) {
             return null;
         }
         return s;
+    }   
+
+    /**
+     * Laskee joukkueen voiman (käytetään kun pelaaja ajetaan ulos kentältä
+     */
+    public void joukkueenVoimaLasku() {
+        joukkueenVoima = 0;
+        for (Pelaaja p : this.pelaajat) {
+            joukkueenVoima = joukkueenVoima + p.getKokonaisAttribuutit();
+        }
     }
 
     public void setJoukkueenVoima(int joukkueenVoima) {

@@ -11,3 +11,5 @@ Päivä | Tunnit | Kuvaus
 26.09.2016 | 2h | Käyttöliittymän suunnittelua                                      
 27.09.2016 | 3h | Käyttöliittymän suunnittelua
 30.09.2016 | 5h | Logiikan muuttamista, käyttöliittymän suunnittelua
+06.10.2016 | 3h | Käyttöliittymää, logiikkaa
+07.10.2016 | 5h | Käyttöliittymää, logiikkaa

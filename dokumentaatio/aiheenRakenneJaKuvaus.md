@@ -10,5 +10,7 @@ Ohjelmassa valitaan ohjelman luomia satunnaisilla attribuuteilla varustettuja pe
 - pelin sammuttaminen
 
 ![Luokkakaavio](https://github.com/Koppari/Jalkapallosimulaattori/raw/master/dokumentaatio/lkaavio.png?raw=true)
+![Sekvenssikaavio pelin aloitukselle](https://github.com/Koppari/Jalkapallosimulaattori/raw/master/dokumentaatio/sekvenssi_pelinaloitus.jpg?raw=true)
+![Sekvenssikaavio pelaajien valinnalle](https://github.com/Koppari/Jalkapallosimulaattori/raw/master/dokumentaatio/sekvenssi_pelaajienvalinta.jpg?raw=true)
 
 - luokan RandomEventGeneraattori metodeissa viitataan myös suoraan Joukkue- ja Pelaaja-luokkiin

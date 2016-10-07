@@ -15,12 +15,15 @@ public class Pelaaja {
     //pelaajan tiedot
     private int id;
     private String nimi;
-    private int tyyppi; //maalivahti 0, puolustaja 1, keskikenttä 2, hyök. 3
+    private int tyyppi; //maalivahti 0, puolustaja 1, keskikenttä 2, hyök. 3, ulos pelistä 4
 
     //pelaajien attribuutit
     private int nopeus, tekniikka, puolustaminen, voima;
     private int kokonaisAttribuutit;
     private String rooli;
+
+    //tällä lasketaan pelaajan kortit, jos 2 = ulos pelistä
+    protected int kortit = 0;
 
     //nimiä pelaajille, väliaikainen
     private static String[] names = {"Joni", "Petteri", "Jorma", "Mauri", "Jaakko", "Aatu", "Akseli", "Olavi", "Kalevi", "Paavo", "Roope"};
@@ -46,7 +49,7 @@ public class Pelaaja {
 
     /**
      * Metodi arpoo joukkueen pelaajille attribuutit.
-     * 
+     *
      *
      */
     public void attribuutit() {
@@ -94,14 +97,16 @@ public class Pelaaja {
 
     /**
      * Listaa pelaajan attribuutit ja tiedot.
-     * 
+     *
      *
      * @return Pelaajan attribuutit listana.
      */
     public String printAttribuutit() {
-        return nimi + ", tyyppi: " + tyyppi + "\nNopeus: " + nopeus + "\nPuolustaminen: " + puolustaminen + "\nTekniikka: " + tekniikka + "\nVoima: " + voima + "\nKokonais: " + kokonaisAttribuutit;
+        return nimi + ", rooli: " + getRooli() + "\nNopeus: " + nopeus + "\nPuolustaminen: " 
+                + puolustaminen + "\nTekniikka: " + tekniikka + "\nVoima: " + voima 
+                + "\nKokonais: " + kokonaisAttribuutit + "\n\n";
     }
-
+    
     //getterit ja setterit
     public int getId() {
         return id;
@@ -159,13 +164,24 @@ public class Pelaaja {
         return rooli;
     }
 
+    public int getKortit() {
+        return kortit;
+    }
+
+    public void setKortit(int kortit) {
+        this.kortit = kortit;
+    }
+
     public void setRooli(String rooli) {
         this.rooli = rooli;
     }
 
-    //lisäys: muuttaa myös attribuutteja
     public void setTyyppi(int tyyppi) {
         this.tyyppi = tyyppi;
     }
 
+    public void setKokonaisAttribuutit(int kokonaisAttribuutit) {
+        this.kokonaisAttribuutit = kokonaisAttribuutit;
+    }
+    
 }

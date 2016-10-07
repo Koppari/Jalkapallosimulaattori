@@ -5,6 +5,6 @@
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 [Rakenne](dokumentaatio/aiheenRakenneJaKuvaus.md)
 [CheckStyle](https://htmlpreview.github.io/?https://github.com/Koppari/Jalkapallosimulaattori/blob/master/dokumentaatio/site/checkstyle.html)
-[Pit](https://htmlpreview.github.io/?https://github.com/Koppari/Jalkapallosimulaattori/blob/master/dokumentaatio/201609302347/index.html)
+[Pit](https://htmlpreview.github.io/?https://github.com/Koppari/Jalkapallosimulaattori/blob/master/dokumentaatio/201610072214/index.html)
 
 
