@@ -83,6 +83,7 @@ public class Joukkue {
      */
     public void pelaajatKentalle() {
         for (Pelaaja p : this.pelaajat) {
+            p.setKortit(0);
             if (!p.getKentalla()) {
                 p.setKentalla(true);
             }
