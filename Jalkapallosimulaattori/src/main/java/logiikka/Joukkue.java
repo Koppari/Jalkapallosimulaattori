@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 public class Joukkue {
 
-    // joukkue koostuu pelaajista
     protected ArrayList<Pelaaja> pelaajat = new ArrayList();
+    protected ArrayList<Pelaaja> tallennetutPelaajat = new ArrayList();
     protected int joukkueenVoima = 0;
     protected String nimi;
 
@@ -48,10 +48,11 @@ public class Joukkue {
      */
     public void poistaPelaajat() {
         pelaajat.clear();
-    }   
-    
+    }
+
     /**
      * Printtaa joukkueen pelaajien attribuutit "korttimaisesti."
+     *
      * @return Pelaajien attribuutit.
      */
     public String printPelaajat() {
@@ -63,15 +64,28 @@ public class Joukkue {
             return null;
         }
         return s;
-    }   
+    }
 
     /**
-     * Laskee joukkueen voiman (käytetään kun pelaaja ajetaan ulos kentältä
+     * Laskee joukkueen voiman
      */
     public void joukkueenVoimaLasku() {
         joukkueenVoima = 0;
         for (Pelaaja p : this.pelaajat) {
-            joukkueenVoima = joukkueenVoima + p.getKokonaisAttribuutit();
+            if (p.getKentalla()) {
+                joukkueenVoima = joukkueenVoima + p.getKokonaisAttribuutit();
+            }
+        }
+    }
+    
+    /**
+     * Tuo pelaajat takaisin kentälle.
+     */
+    public void pelaajatKentalle() {
+        for (Pelaaja p : this.pelaajat) {
+            if (!p.getKentalla()) {
+                p.setKentalla(true);
+            }
         }
     }
 

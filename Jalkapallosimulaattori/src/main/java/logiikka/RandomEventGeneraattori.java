@@ -13,8 +13,8 @@ public class RandomEventGeneraattori {
     }
 
     /**
-     * Antaa isomman mahdollisuuden siihen että maaliMahdollisuus kuuluu joukkueelle jolla
- on parempi voima prosentillisesti.
+     * Antaa isomman mahdollisuuden siihen että maaliMahdollisuus kuuluu
+     * joukkueelle jolla on parempi voima prosentillisesti.
      *
      * @param j Eka joukkue.
      * @param k Toka joukkue.
@@ -85,21 +85,31 @@ public class RandomEventGeneraattori {
         //valitsee maalille tekijän, mitä hyökkäävämpi pelaaja sitä varmemmin maaliMahdollisuus häneltä
         double maaliMahdollisuus = R.nextDouble();
 
+        Pelaaja maalintekija = j.pelaajat.get(R.nextInt(j.pelaajat.size()));
+
         if (maaliMahdollisuus >= 0.995) {
-            return j.pelaajat.get(0);
+            maalintekija = j.pelaajat.get(0);
         }
         if (maaliMahdollisuus < 0.995 && maaliMahdollisuus >= 0.84) {
-            return j.pelaajat.get(R.ints(1, 1, 4).findFirst().getAsInt());
+            maalintekija = j.pelaajat.get(R.ints(1, 1, 4).findFirst().getAsInt());
         }
         if (maaliMahdollisuus < 0.84 && maaliMahdollisuus >= 0.50) {
-            return j.pelaajat.get(R.ints(1, 5, 8).findFirst().getAsInt());
+            maalintekija = j.pelaajat.get(R.ints(1, 5, 8).findFirst().getAsInt());
         }
         if (maaliMahdollisuus < 0.50) {
-            return j.pelaajat.get(R.ints(1, 9, 10).findFirst().getAsInt());
+            maalintekija = j.pelaajat.get(R.ints(1, 9, 10).findFirst().getAsInt());
         }
 
-        //palauttaa satunnaisen varalta pelaajan jos ei löydetä muutoin 
-        return j.pelaajat.get(R.nextInt(j.pelaajat.size()));
+        //jos käy niin että maalintekijä kentalla = false
+        if (!maalintekija.kentalla) {
+            //..haetaan joku muu listasta
+            maalintekija = j.pelaajat.stream()
+                    .filter(p -> p.kentalla != false)
+                    .findAny().get();
+        }
+
+        return maalintekija;
+
     }
 
     public static Pelaaja taklaus(Joukkue j) {
@@ -110,21 +120,29 @@ public class RandomEventGeneraattori {
         //valitsee taklaajan, mitä puolustavampi pelaaja sitä varmemmin taklaus häneltä
         double taklausMahdollisuus = R.nextDouble();
 
+        Pelaaja taklaaja = j.pelaajat.get(R.nextInt(j.pelaajat.size()));
+
         if (taklausMahdollisuus >= 0.90) {
-            return j.pelaajat.get(0);
+            taklaaja = j.pelaajat.get(0);
         }
         if (taklausMahdollisuus < 0.90 && taklausMahdollisuus >= 0.50) {
-            return j.pelaajat.get(R.ints(1, 1, 4).findFirst().getAsInt());
+            taklaaja = j.pelaajat.get(R.ints(1, 1, 4).findFirst().getAsInt());
         }
         if (taklausMahdollisuus < 0.50 && taklausMahdollisuus >= 0.10) {
-            return j.pelaajat.get(R.ints(1, 5, 8).findFirst().getAsInt());
+            taklaaja = j.pelaajat.get(R.ints(1, 5, 8).findFirst().getAsInt());
         }
         if (taklausMahdollisuus < 0.10) {
-            return j.pelaajat.get(R.ints(1, 9, 10).findFirst().getAsInt());
+            taklaaja = j.pelaajat.get(R.ints(1, 9, 10).findFirst().getAsInt());
         }
 
-        //palauttaa satunnaisen varalta pelaajan jos ei löydetä muutoin 
-        return j.pelaajat.get(R.nextInt(j.pelaajat.size()));
+        if (!taklaaja.kentalla) {
+            //..haetaan joku muu listasta
+            taklaaja = j.pelaajat.stream()
+                    .filter(p -> p.kentalla != false)
+                    .findAny().get();
+        }
+
+        return taklaaja;
     }
 
 }

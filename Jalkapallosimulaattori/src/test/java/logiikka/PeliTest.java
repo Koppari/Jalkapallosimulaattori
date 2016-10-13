@@ -43,15 +43,17 @@ public class PeliTest {
     public void tilastotPalauttaaOikein() {
         p.matsinGenerointi(x, y);
         assertEquals(p.tilastot(), "Joukkueesi maalit: " + p.omatMaalit + "\n"
-                + "Vastustajan maalit: " + p.vihollisenMaalit + "\n"
+                + "Vastustajan maalit: " + p.vihollisenMaalit + "\n\n"
                 + "Joukkueesi laukaukset: " + p.omatLaukaukset + "\n"
-                + "Vastustajan laukaukset: " + p.vihollisenLaukaukset + "\n"
+                + "Vastustajan laukaukset: " + p.vihollisenLaukaukset + "\n\n"
                 + "Joukkueesi taklaukset: " + p.omatTaklaukset + "\n"
-                + "Vastustajan taklaukset: " + p.vihollisenTaklaukset + "\n"
+                + "Vastustajan taklaukset: " + p.vihollisenTaklaukset + "\n\n"
                 + "Joukkueesi keltaiset: " + p.omatKeltaiset + "\n"
-                + "Vastustajan keltaiset: " + p.vihollisenKeltaiset + "\n"
+                + "Vastustajan keltaiset: " + p.vihollisenKeltaiset + "\n\n"
                 + "Joukkueesi punaiset: " + p.omatPunaiset + "\n"
-                + "Vastustajan punaiset: " + p.vihollisenPunaiset + "\n");
+                + "Vastustajan punaiset: " + p.vihollisenPunaiset + "\n\n"
+                + "Joukkueesi syötöt: " + p.omatSyotot + "\n"
+                + "Vastustajan syötöt: " + p.vihollisenSyotot + "\n\n");
     }
 
     @Test

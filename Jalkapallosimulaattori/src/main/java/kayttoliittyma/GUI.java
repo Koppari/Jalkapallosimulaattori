@@ -108,7 +108,7 @@ public class GUI extends JPanel implements ActionListener {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         peli.tilastojenNollaus();
-
+        
         teksti.setCaretPosition(0);
 
         revalidate();

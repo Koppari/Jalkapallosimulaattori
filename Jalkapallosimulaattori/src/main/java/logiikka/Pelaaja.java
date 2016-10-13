@@ -24,6 +24,7 @@ public class Pelaaja {
 
     //tällä lasketaan pelaajan kortit, jos 2 = ulos pelistä
     protected int kortit = 0;
+    protected boolean kentalla = true;
 
     //nimiä pelaajille, väliaikainen
     private static String[] names = {"Joni", "Petteri", "Jorma", "Mauri", "Jaakko", "Aatu", "Akseli", "Olavi", "Kalevi", "Paavo", "Roope"};
@@ -91,6 +92,10 @@ public class Pelaaja {
         }
     }
 
+    public void pelaajaUlosKentalta() {
+        kentalla = false;
+    }
+    
     public String toString() {
         return nimi + ", " + rooli;
     }
@@ -102,7 +107,7 @@ public class Pelaaja {
      * @return Pelaajan attribuutit listana.
      */
     public String printAttribuutit() {
-        return nimi + ", rooli: " + getRooli() + "\nNopeus: " + nopeus + "\nPuolustaminen: " 
+        return nimi + "\nRooli: " + getRooli() + "\nNopeus: " + nopeus + "\nPuolustaminen: " 
                 + puolustaminen + "\nTekniikka: " + tekniikka + "\nVoima: " + voima 
                 + "\nKokonais: " + kokonaisAttribuutit + "\n\n";
     }
@@ -140,6 +145,10 @@ public class Pelaaja {
         return puolustaminen;
     }
 
+    public boolean getKentalla() {
+        return kentalla;
+    }
+    
     public void setPuolustaminen(int puolustaminen) {
         this.puolustaminen = puolustaminen;
     }
@@ -183,5 +192,9 @@ public class Pelaaja {
     public void setKokonaisAttribuutit(int kokonaisAttribuutit) {
         this.kokonaisAttribuutit = kokonaisAttribuutit;
     }
-    
+
+    public void setKentalla(boolean kentalla) {
+        this.kentalla = kentalla;
+    }
+       
 }

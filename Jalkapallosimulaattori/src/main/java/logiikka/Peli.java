@@ -20,7 +20,7 @@ public class Peli {
     //tilastoja
     int omatMaalit = 0, vihollisenMaalit = 0;
     int omatLaukaukset = 0, vihollisenLaukaukset = 0;
-    //int omatSyotot = 0, vihollisenSyotot = 0;
+    int omatSyotot = 0, vihollisenSyotot = 0;
     int omatTaklaukset = 0, vihollisenTaklaukset = 0;
     int omatKeltaiset = 0, vihollisenKeltaiset = 0;
     int omatPunaiset = 0, vihollisenPunaiset = 0;
@@ -42,7 +42,6 @@ public class Peli {
      *
      */
     public void matsinGenerointi(Joukkue x, Joukkue y) {
-
         try {
             PrintWriter tiedostokirjoitin = new PrintWriter("matsi.txt");
             for (int i = 0; i <= 90; i++) {
@@ -59,7 +58,12 @@ public class Peli {
         } catch (Exception e) {
             System.out.println(e);
         }
-
+        
+        x.pelaajatKentalle();
+        y.pelaajatKentalle();
+        x.joukkueenVoimaLasku();
+        y.joukkueenVoimaLasku();
+        
     }
 
     /**
@@ -76,6 +80,8 @@ public class Peli {
         vihollisenKeltaiset = 0;
         omatPunaiset = 0;
         vihollisenPunaiset = 0;
+        omatSyotot = 0;
+        vihollisenSyotot = 0;
     }
 
     /**
@@ -86,15 +92,17 @@ public class Peli {
     public String tilastot() {
         String s = "";
         s = "Joukkueesi maalit: " + omatMaalit + "\n"
-                + "Vastustajan maalit: " + vihollisenMaalit + "\n"
+                + "Vastustajan maalit: " + vihollisenMaalit + "\n\n"
                 + "Joukkueesi laukaukset: " + omatLaukaukset + "\n"
-                + "Vastustajan laukaukset: " + vihollisenLaukaukset + "\n"
+                + "Vastustajan laukaukset: " + vihollisenLaukaukset + "\n\n"
                 + "Joukkueesi taklaukset: " + omatTaklaukset + "\n"
-                + "Vastustajan taklaukset: " + vihollisenTaklaukset + "\n"
+                + "Vastustajan taklaukset: " + vihollisenTaklaukset + "\n\n"
                 + "Joukkueesi keltaiset: " + omatKeltaiset + "\n"
-                + "Vastustajan keltaiset: " + vihollisenKeltaiset + "\n"
+                + "Vastustajan keltaiset: " + vihollisenKeltaiset + "\n\n"
                 + "Joukkueesi punaiset: " + omatPunaiset + "\n"
-                + "Vastustajan punaiset: " + vihollisenPunaiset + "\n";
+                + "Vastustajan punaiset: " + vihollisenPunaiset + "\n\n"
+                + "Joukkueesi syötöt: " + omatSyotot + "\n"
+                + "Vastustajan syötöt: " + vihollisenSyotot + "\n\n";
 
         return s;
     }
@@ -119,7 +127,7 @@ public class Peli {
     }
 
     /**
-     * Luo satunnaiset joukkueet.
+     * Luo satunnaiset joukkueet ja tallentaa ne erilliseen ArrayListiin.
      *
      *
      * @param omaNimi Oman joukkuuen nimi.
@@ -148,6 +156,8 @@ public class Peli {
         double event = 0;
         event = R.nextDouble();
 
+        syotto();
+
         if (event > 0.95) { //maali
             s = s + maali();
         }
@@ -160,7 +170,7 @@ public class Peli {
             s = s + laukaus();
         }
 
-        if (event < 0.9 && event > 0.1) {
+        if (event < 0.9 && event > 0.1) { //taklaus
             s = s + taklaus();
         }
 
@@ -199,6 +209,14 @@ public class Peli {
     }
 
     /**
+     * Antaa joukkueelle syöttöjä per peliminuutti.
+     */
+    public void syotto() {
+        omatSyotot = omatSyotot + 6;
+        vihollisenSyotot = vihollisenSyotot + 6;
+    }
+
+    /**
      * Katsoo oliko laukaus oma vai vastustajan.
      */
     public String laukaus() {
@@ -221,7 +239,7 @@ public class Peli {
         double r = R.nextDouble();
         Pelaaja taklaaja = null;
 
-        if (r < 0.05) {
+        if (r < 0.04) {
             double taklausMahdollisuus = R.nextDouble();
             if (taklausMahdollisuus < REG.joukkueenParemmuus(x, y)) {
                 omatTaklaukset++;
@@ -231,9 +249,9 @@ public class Peli {
                 if (taklaaja.kortit >= 2) {
                     omatPunaiset++;
                     s = s + " Hän on ulkona pelistä!";
-                    /*x.pelaajaUlosKentalta(taklaaja);
-                    x.joukkueenVoimaLasku();*/
-                }
+                    taklaaja.pelaajaUlosKentalta();
+                    x.joukkueenVoimaLasku();
+               }
             }
             if (taklausMahdollisuus > REG.joukkueenParemmuus(x, y)) {
                 vihollisenTaklaukset++;
@@ -243,8 +261,8 @@ public class Peli {
                 if (taklaaja.kortit >= 2) {
                     vihollisenPunaiset++;
                     s = s + " Hän on ulkona pelistä!";
-                    /*y.pelaajaUlosKentalta(taklaaja);
-                    y.joukkueenVoimaLasku();*/
+                    taklaaja.pelaajaUlosKentalta();
+                    y.joukkueenVoimaLasku();
                 }
             }
         }
