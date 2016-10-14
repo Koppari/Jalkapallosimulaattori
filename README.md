@@ -4,7 +4,11 @@
 [Aihemäärittely](dokumentaatio/aihemaarittely.md)
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 [Rakenne](dokumentaatio/aiheenRakenneJaKuvaus.md)
-[CheckStyle](https://htmlpreview.github.io/?https://github.com/Koppari/Jalkapallosimulaattori/blob/master/dokumentaatio/site/checkstyle.html)
-[Pit](https://htmlpreview.github.io/?https://github.com/Koppari/Jalkapallosimulaattori/blob/master/dokumentaatio/201610142344/index.html)
+[CheckStyle](https://cdn.rawgit.com/Koppari/Jalkapallosimulaattori/master/dokumentaatio/site/checkstyle.html)
+[Pit](https://cdn.rawgit.com/Koppari/Jalkapallosimulaattori/master/dokumentaatio/201610142344/index.html)
+
+14.10 palautukseen:
+-Päätin hoitaa testit luomalla testinauttajat-paketin, johon tein luokkia jotka ovat kopioita alkuperäisistä luokista mutta ilman randomeita muuttujia. Teen testiluokat loppuun viimeiseen palautukseen mutta tällä hetkellä Peli- ja Pelaaja-luokat testattu. 
+
 
 
