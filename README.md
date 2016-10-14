@@ -8,7 +8,7 @@
 [Pit](https://cdn.rawgit.com/Koppari/Jalkapallosimulaattori/master/dokumentaatio/201610142344/index.html)
 
 14.10 palautukseen:
-Päätin hoitaa testit luomalla testinauttajat-paketin, johon tein luokkia jotka ovat kopioita alkuperäisistä luokista mutta ilman randomeita muuttujia. Teen testiluokat loppuun viimeiseen palautukseen mutta tällä hetkellä Peli- ja Pelaaja-luokat testattu. 
+Päätin hoitaa testit luomalla testinauttajat-paketin, johon tein luokkia jotka ovat kopioita alkuperäisistä luokista mutta siten että randomit muuttujat on muutettu mahdolliksi "randomeiksi" numeroiksi. Teen testiluokat loppuun viimeiseen palautukseen mutta tällä hetkellä Peli- ja Pelaaja-luokat testattu. 
 
 
 
