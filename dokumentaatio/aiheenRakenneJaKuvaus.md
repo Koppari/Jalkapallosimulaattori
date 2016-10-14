@@ -5,12 +5,15 @@ Ohjelmassa valitaan ohjelman luomia satunnaisilla attribuuteilla varustettuja pe
 
 **Käyttäjän toiminnot:** 
 - uuden pelin aloittaminen
-- joukkueen tietojen luonti
+- joukkueen tietojen luonti (to-do)
 - pelaajien valinta
-- pelin sammuttaminen
+- joukkueen kokonaistilastojen tarkistus
+- uusien joukkueiden luonti
 
-![Luokkakaavio](https://github.com/Koppari/Jalkapallosimulaattori/raw/master/dokumentaatio/lkaavio.png?raw=true)
+![Luokkakaavio](https://github.com/Koppari/Jalkapallosimulaattori/raw/master/dokumentaatio/lkaavio2.png?raw=true)
+- luokan RandomEventGeneraattori metodeissa viitataan suoraan Joukkue- ja Pelaaja-luokan ilmentymiin
+
 ![Sekvenssikaavio pelin aloitukselle](https://github.com/Koppari/Jalkapallosimulaattori/raw/master/dokumentaatio/sekvenssi_pelinaloitus.jpg?raw=true)
 ![Sekvenssikaavio pelaajien valinnalle](https://github.com/Koppari/Jalkapallosimulaattori/raw/master/dokumentaatio/sekvenssi_pelaajienvalinta.jpg?raw=true)
 
-- luokan RandomEventGeneraattori metodeissa viitataan myös suoraan Joukkue- ja Pelaaja-luokkiin
+

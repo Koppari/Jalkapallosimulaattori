@@ -66,6 +66,9 @@ public class GUI extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * Joukkueen luonti.
+     */
     public void luonti() {
         teksti.setText("");
 
@@ -83,6 +86,9 @@ public class GUI extends JPanel implements ActionListener {
         repaint();
     }
 
+    /**
+     * Peliin eteneminen.
+     */
     public void kylla() {
         teksti.setText("");
 
@@ -99,9 +105,12 @@ public class GUI extends JPanel implements ActionListener {
         repaint();
     }
 
+    /**
+     * Matsi.txt kirjoitus + luku.
+     */
     public void matsinGenerointi() {
         teksti.setText("");
-        peli.matsinGenerointi(peli.x, peli.y);
+        peli.matsinGenerointi();
         try {
             teksti.append(peli.x.getNimi() + "-" + peli.y.getNimi() + "\n" + peli.matsinLuku() + "\n");
         } catch (FileNotFoundException ex) {

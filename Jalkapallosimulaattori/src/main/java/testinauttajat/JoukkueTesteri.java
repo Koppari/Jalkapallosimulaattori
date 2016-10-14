@@ -1,21 +1,24 @@
-package logiikka;
+package testinauttajat;
 
 import java.util.ArrayList;
 
 /**
- * Luokka peleissä pelaaville joukkueille.
+ * Luokka auttaa randomeiden metodien testaamisessa luokassa Joukkue. Luokka on
+ * kopio alkuperäisestä luokasta mutta randomit metodit on korvattu itse
+ * määritellyillä.
+ *
  */
-public class Joukkue {
+public class JoukkueTesteri {
 
-    protected ArrayList<Pelaaja> pelaajat = new ArrayList();
-    protected ArrayList<Pelaaja> tallennetutPelaajat = new ArrayList();
+    protected ArrayList<PelaajaTesteri> pelaajat = new ArrayList();
+    protected ArrayList<PelaajaTesteri> tallennetutPelaajat = new ArrayList();
     protected int joukkueenVoima = 0;
     protected String nimi;
 
-    public Joukkue() {
+    public JoukkueTesteri() {
     }
 
-    public Joukkue(String nimi) {
+    public JoukkueTesteri(String nimi) {
         this.nimi = nimi;
     }
 
@@ -24,15 +27,15 @@ public class Joukkue {
      *
      */
     public void luoJoukkue() {
-        pelaajat.add(new Pelaaja(0));
+        pelaajat.add(new PelaajaTesteri(0));
         for (int i = 1; i <= 4; i++) {
-            pelaajat.add(new Pelaaja(1));
+            pelaajat.add(new PelaajaTesteri(1));
         }
         for (int i = 1; i <= 4; i++) {
-            pelaajat.add(new Pelaaja(2));
+            pelaajat.add(new PelaajaTesteri(2));
         }
         for (int i = 1; i <= 2; i++) {
-            pelaajat.add(new Pelaaja(3));
+            pelaajat.add(new PelaajaTesteri(3));
         }
 
         joukkueenVoimaLasku();
@@ -57,7 +60,7 @@ public class Joukkue {
      */
     public String printPelaajat() {
         String s = "";
-        for (Pelaaja p : this.pelaajat) {
+        for (PelaajaTesteri p : this.pelaajat) {
             s = s + p.printAttribuutit() + "\n";
         }
         if (this.pelaajat == null) {
@@ -71,7 +74,7 @@ public class Joukkue {
      */
     public void joukkueenVoimaLasku() {
         joukkueenVoima = 0;
-        for (Pelaaja p : this.pelaajat) {
+        for (PelaajaTesteri p : this.pelaajat) {
             if (p.getKentalla()) {
                 joukkueenVoima = joukkueenVoima + p.getKokonaisAttribuutit();
             }
@@ -82,7 +85,7 @@ public class Joukkue {
      * Tuo pelaajat takaisin kentälle.
      */
     public void pelaajatKentalle() {
-        for (Pelaaja p : this.pelaajat) {
+        for (PelaajaTesteri p : this.pelaajat) {
             p.setKortit(0);
             if (!p.getKentalla()) {
                 p.setKentalla(true);
@@ -94,7 +97,7 @@ public class Joukkue {
         this.joukkueenVoima = joukkueenVoima;
     }
 
-    public ArrayList<Pelaaja> getPelaajat() {
+    public ArrayList<PelaajaTesteri> getPelaajat() {
         return pelaajat;
     }
 

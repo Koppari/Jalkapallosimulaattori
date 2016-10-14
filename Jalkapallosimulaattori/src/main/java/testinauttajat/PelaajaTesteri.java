@@ -1,19 +1,22 @@
-package logiikka;
+package testinauttajat;
 
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Luokka joukkueiden pelaajille.
+ * Luokka auttaa randomeiden metodien testaamisessa luokassa Pelaaja. Luokka on
+ * kopio alkuperäisestä luokasta mutta randomit metodit on korvattu itse
+ * määritellyillä.
  */
-public class Pelaaja {
-
-    //luodaan uniikki id- ja random-oliot
-    private static AtomicInteger uid = new AtomicInteger();
-    private static Random random = new Random();
+public class PelaajaTesteri {
 
     //pelaajan tiedot
+    private static AtomicInteger uid = new AtomicInteger();
+    private int atomicUid;
+
+    //testauksen helpottamiseksi
     private int id;
+    private int idlaskuri = 0;
+
     private String nimi;
     private int tyyppi; //maalivahti 0, puolustaja 1, keskikenttä 2, hyök. 3
 
@@ -29,21 +32,22 @@ public class Pelaaja {
     //nimiä pelaajille, väliaikainen
     private static String[] names = {"Joni", "Petteri", "Jorma", "Mauri", "Jaakko", "Aatu", "Akseli", "Olavi", "Kalevi", "Paavo", "Roope"};
 
-    public Pelaaja() {
-        this(random.nextInt(4));
+    public PelaajaTesteri() {
+        this(3);
     }
 
-    public Pelaaja(int tyyppi) {
-        this(names[random.nextInt(10)], tyyppi);
+    public PelaajaTesteri(int tyyppi) {
+        this(names[1], tyyppi);
     }
 
-    public Pelaaja(String nimi, int tyyppi) {
-        this.id = uid.getAndIncrement();
+    public PelaajaTesteri(String nimi, int tyyppi) {
+        this.atomicUid = uid.getAndIncrement();
+        this.id = 123;
         this.nimi = nimi;
         if (tyyppi <= 3 && tyyppi >= 0) {
-            this.tyyppi = tyyppi;
+            setTyyppi(tyyppi);
         } else {
-            this.tyyppi = random.nextInt(4);
+            setTyyppi(3);
         }
         attribuutit();
     }
@@ -56,45 +60,42 @@ public class Pelaaja {
     public void attribuutit() {
 
         if (tyyppi == 0) {
-            setNopeus(random.nextInt(10));
-            setTekniikka(random.nextInt(10));
-            setPuolustaminen(random.nextInt(20) + 80);
-            setVoima(random.nextInt(30));
+            setNopeus(5);
+            setTekniikka(5);
+            setPuolustaminen(90);
+            setVoima(15);
             kokonaisAttribuutit = nopeus + puolustaminen + tekniikka + voima;
-            setRooli("maalivahti");
+            rooli = "maalivahti";
         }
 
         if (tyyppi == 1) {
-            setNopeus(random.nextInt(20));
-            setTekniikka(random.nextInt(20));
-            setPuolustaminen(random.nextInt(40) + 60);
-            setVoima(random.nextInt(50) + 50);
+            setNopeus(10);
+            setTekniikka(10);
+            setPuolustaminen(80);
+            setVoima(75);
             kokonaisAttribuutit = nopeus + puolustaminen + tekniikka + voima;
-            setRooli("puolustaja");
+            rooli = "puolustaja";
         }
 
         if (tyyppi == 2) {
-            setNopeus(random.nextInt(35) + 10);
-            setTekniikka(random.nextInt(35) + 10);
-            setPuolustaminen(random.nextInt(35) + 10);
-            setVoima(random.nextInt(35) + 10);
+            setNopeus(28);
+            setTekniikka(28);
+            setPuolustaminen(28);
+            setVoima(28);
             kokonaisAttribuutit = nopeus + puolustaminen + tekniikka + voima;
-            setRooli("keskikenttä");
+            rooli = "keskikenttä";
         }
 
         if (tyyppi == 3) {
-            setNopeus(random.nextInt(20) + 80);
-            setTekniikka(random.nextInt(20) + 80);
-            setPuolustaminen(random.nextInt(5));
-            setVoima(random.nextInt(50));
+            setNopeus(90);
+            setTekniikka(90);
+            setPuolustaminen(3);
+            setVoima(25);
             kokonaisAttribuutit = nopeus + puolustaminen + tekniikka + voima;
-            setRooli("hyökkääjä");
+            rooli = "hyökkääjä";
         }
     }
 
-    /**
-     * Asettaa pelaajan kentällä oloksi falsen.
-     */
     public void pelaajaUlosKentalta() {
         setKentalla(false);
     }
@@ -115,9 +116,6 @@ public class Pelaaja {
                 + "\nKokonais: " + kokonaisAttribuutit + "\n\n";
     }
 
-    /**
-     * Pelaaja saa keltaisen kortin.
-     */
     public void kortti() {
         kortit++;
     }
@@ -125,6 +123,10 @@ public class Pelaaja {
     //getterit ja setterit
     public int getId() {
         return id;
+    }
+
+    public int getUid() {
+        return atomicUid;
     }
 
     public String getNimi() {

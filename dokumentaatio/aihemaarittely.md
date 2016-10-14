@@ -5,7 +5,8 @@ Ohjelmassa valitaan ohjelman luomia satunnaisilla attribuuteilla varustettuja pe
 
 **Käyttäjän toiminnot:** 
 - uuden pelin aloittaminen
-- joukkueen tietojen luonti
+- joukkueen tietojen luonti (to-do)
 - pelaajien valinta
-- pelin sammuttaminen
+- joukkueen kokonaistilastojen tarkistus
+- uusien joukkueiden luonti
 

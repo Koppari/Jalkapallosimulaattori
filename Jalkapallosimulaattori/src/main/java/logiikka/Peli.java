@@ -1,10 +1,6 @@
 package logiikka;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Random;
 
 /**
@@ -14,8 +10,9 @@ public class Peli {
 
     private static final Random R = new Random();
     private static final RandomEventGeneraattori REG = new RandomEventGeneraattori();
+    private TiedostonHoitaja tiedostonHoitaja = new TiedostonHoitaja(this);
     public Joukkue x, y;
-    private String s = "";
+    protected String s = "";
 
     //tilastoja
     int omatMaalit = 0, vihollisenMaalit = 0;
@@ -34,36 +31,23 @@ public class Peli {
     }
 
     /**
-     * Generoi matsin eventit 90 minuuttiin, kirjoittaa sen tiedostoon. Lopuksi
-     * printtaa tilastoja.
-     *
-     * @param x Pelaajan joukkue
-     * @param y Vastustajan joukkue
-     *
+     * Generoi matsin ja palauttaa ulosajetut pelaajat kentälle.
      */
-    public void matsinGenerointi(Joukkue x, Joukkue y) {
-        try {
-            PrintWriter tiedostokirjoitin = new PrintWriter("matsi.txt");
-            for (int i = 0; i <= 90; i++) {
-                s = omatMaalit + "-" + vihollisenMaalit + ", " + i + " min: ";
-                eventGenerointi(x, y);
-                tiedostokirjoitin.println(s);
-            }
+    public void matsinGenerointi() {
+        tiedostonHoitaja.tiedostonGenerointi();
+        this.x.pelaajatKentalle();
+        this.y.pelaajatKentalle();
+        this.x.joukkueenVoimaLasku();
+        this.y.joukkueenVoimaLasku();
+    }
 
-            tiedostokirjoitin.println("Peli päättyi " + omatMaalit + "-" + vihollisenMaalit + "!");
-            tiedostokirjoitin.println("\nTilastoja:\n");
-            tiedostokirjoitin.println(tilastot());
-            tiedostokirjoitin.close();
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-        x.pelaajatKentalle();
-        y.pelaajatKentalle();
-        x.joukkueenVoimaLasku();
-        y.joukkueenVoimaLasku();
-        
+    /**
+     * Lukee matsin tapahtumat.
+     *
+     * @return Matsin tapahtumat.
+     */
+    public String matsinLuku() throws FileNotFoundException {
+        return tiedostonHoitaja.matsinLuku();
     }
 
     /**
@@ -104,25 +88,6 @@ public class Peli {
                 + "Joukkueesi syötöt: " + omatSyotot + "\n"
                 + "Vastustajan syötöt: " + vihollisenSyotot + "\n\n";
 
-        return s;
-    }
-
-    /**
-     * Lukee matsin tapahtumat tiedostosta.
-     *
-     *
-     * @return Matsin tapahtumat.
-     */
-    public String matsinLuku() throws FileNotFoundException {
-        String s = "";
-        try (BufferedReader br = new BufferedReader(new FileReader("matsi.txt"))) {
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                s = s + line + "\n";
-            }
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
         return s;
     }
 
@@ -212,8 +177,8 @@ public class Peli {
      * Antaa joukkueelle syöttöjä per peliminuutti.
      */
     public void syotto() {
-        omatSyotot = omatSyotot + 6;
-        vihollisenSyotot = vihollisenSyotot + 6;
+        omatSyotot = omatSyotot + (R.nextInt(3) + 5);
+        vihollisenSyotot = vihollisenSyotot + (R.nextInt(3) + 5);
     }
 
     /**
@@ -251,7 +216,7 @@ public class Peli {
                     s = s + " Hän on ulkona pelistä!";
                     taklaaja.pelaajaUlosKentalta();
                     x.joukkueenVoimaLasku();
-               }
+                }
             }
             if (taklausMahdollisuus > REG.joukkueenParemmuus(x, y)) {
                 vihollisenTaklaukset++;

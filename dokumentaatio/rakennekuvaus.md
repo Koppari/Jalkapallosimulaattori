@@ -1,0 +1,2 @@
+**Rakennekuvaus:**
+Main-luokka luo ensin Peli-olion joka laitetaan uuden luodun GUI-olion sisälle. GUI-oliolla luodaan sitten pelille käyttöliittymä. Peli on ohjelman keskeisin luokka, sillä se on vastuussa pelin tapahtumien generoimisesta, sen tilastoista ja siihen liittyvien joukkueiden ilmoittamisesta. Peliin kuuluu Joukkueita joihin taas kuuluu Pelaajia. TiedostonHoitaja hoitaa matsireporttien tekemisen omassa luokassaan. RandomEventGeneraattori laskee esimerkiksi joukkueiden paremmuuksia ja kertoo Pelille ketkä pelaajat ja kumpi joukkue tekevät mitäkin.

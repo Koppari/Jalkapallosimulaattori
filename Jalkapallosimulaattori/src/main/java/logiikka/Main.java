@@ -11,7 +11,7 @@ public class Main {
         javax.swing.SwingUtilities.invokeLater(() -> {
             GUI.framenLuonti(gui);
         });
-        
+
     }
 
 }

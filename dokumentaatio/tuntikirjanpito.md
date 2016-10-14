@@ -13,3 +13,5 @@ Päivä | Tunnit | Kuvaus
 30.09.2016 | 5h | Logiikan muuttamista, käyttöliittymän suunnittelua
 06.10.2016 | 3h | Käyttöliittymää, logiikkaa
 07.10.2016 | 5h | Käyttöliittymää, logiikkaa
+12.10.2016 | 5h | Logiikkaa, testausten suunnittelua
+14.10.2016 | 5h | Ohjelmointia

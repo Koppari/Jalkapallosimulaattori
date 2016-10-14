@@ -1,5 +1,7 @@
 package logiikka;
 
+import logiikka.Joukkue;
+import logiikka.RandomEventGeneraattori;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

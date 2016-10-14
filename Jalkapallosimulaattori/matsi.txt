@@ -1,0 +1,136 @@
+0-0, 0 min: 
+0-0, 1 min: 
+Aatu, hyökkääjä, pelaaja joukkueelle A, laukoi! Ohi meni!
+0-0, 2 min: 
+0-0, 3 min: 
+0-0, 4 min: 
+0-0, 5 min: 
+0-0, 6 min: 
+0-0, 7 min: 
+0-0, 8 min: 
+0-0, 9 min: 
+Kalevi, hyökkääjä, pelaaja joukkueelle B, laukoi! Ohi meni!
+0-0, 10 min: 
+Aatu, hyökkääjä, teki maalin joukkueelle A!
+1-0, 11 min: 
+1-0, 12 min: 
+1-0, 13 min: 
+1-0, 14 min: 
+Aatu, hyökkääjä, pelaaja joukkueelle A, laukoi! Ohi meni!
+1-0, 15 min: 
+1-0, 16 min: 
+1-0, 17 min: 
+1-0, 18 min: 
+Aatu, puolustaja, pelaaja joukkueelle B, laukoi! Ohi meni!
+1-0, 19 min: 
+1-0, 20 min: 
+1-0, 21 min: 
+1-0, 22 min: 
+1-0, 23 min: 
+1-0, 24 min: 
+1-0, 25 min: 
+1-0, 26 min: 
+1-0, 27 min: 
+Jaakko, keskikenttä, pelaaja joukkueelle A, laukoi! Ohi meni!
+1-0, 28 min: 
+1-0, 29 min: 
+Kalevi, hyökkääjä, pelaaja joukkueelle B, laukoi! Ohi meni!
+1-0, 30 min: 
+Mauri, keskikenttä, pelaaja joukkueelle B, laukoi! Ohi meni!
+1-0, 31 min: 
+1-0, 32 min: 
+Joni, keskikenttä, teki maalin joukkueelle B!
+1-1, 33 min: 
+1-1, 34 min: 
+1-1, 35 min: 
+1-1, 36 min: 
+1-1, 37 min: 
+Aatu, hyökkääjä, pelaaja joukkueelle A, laukoi! Ohi meni!
+1-1, 38 min: 
+1-1, 39 min: 
+1-1, 40 min: 
+1-1, 41 min: 
+Jorma, keskikenttä, pelaaja joukkueelle A, laukoi! Ohi meni!
+1-1, 42 min: 
+1-1, 43 min: 
+1-1, 44 min: 
+1-1, 45 min: 
+1-1, 46 min: 
+1-1, 47 min: 
+1-1, 48 min: 
+1-1, 49 min: 
+1-1, 50 min: 
+1-1, 51 min: 
+Joni, keskikenttä, teki maalin joukkueelle A!
+2-1, 52 min: 
+2-1, 53 min: 
+2-1, 54 min: 
+2-1, 55 min: 
+Aatu, puolustaja, pelaaja joukkueelle B, laukoi! Ohi meni!
+2-1, 56 min: 
+2-1, 57 min: 
+2-1, 58 min: 
+2-1, 59 min: 
+Jaakko, keskikenttä, teki maalin joukkueelle B!
+2-2, 60 min: 
+2-2, 61 min: 
+Aatu, hyökkääjä, teki maalin joukkueelle A!
+3-2, 62 min: 
+3-2, 63 min: 
+3-2, 64 min: 
+3-2, 65 min: 
+3-2, 66 min: 
+3-2, 67 min: 
+3-2, 68 min: 
+Kalevi, hyökkääjä, pelaaja joukkueelle B, laukoi! Ohi meni!
+3-2, 69 min: 
+3-2, 70 min: 
+3-2, 71 min: 
+3-2, 72 min: 
+3-2, 73 min: 
+Aatu, hyökkääjä, pelaaja joukkueelle A, laukoi! Ohi meni!
+3-2, 74 min: 
+3-2, 75 min: 
+3-2, 76 min: 
+3-2, 77 min: 
+3-2, 78 min: 
+3-2, 79 min: 
+Petteri, puolustaja, pelaaja joukkueelle A, laukoi! Ohi meni!
+3-2, 80 min: 
+Jorma, keskikenttä, pelaaja joukkueelle A, laukoi! Ohi meni!
+3-2, 81 min: 
+3-2, 82 min: 
+Paavo, puolustaja, pelaaja joukkueelle A, laukoi! Ohi meni!
+3-2, 83 min: 
+3-2, 84 min: 
+3-2, 85 min: 
+3-2, 86 min: 
+3-2, 87 min: 
+Aatu, hyökkääjä, teki maalin joukkueelle A!
+4-2, 88 min: 
+4-2, 89 min: 
+4-2, 90 min: 
+Aatu, hyökkääjä, pelaaja joukkueelle A, laukoi! Ohi meni!
+Peli päättyi 4-2!
+
+Tilastoja:
+
+Joukkueesi maalit: 4
+Vastustajan maalit: 2
+
+Joukkueesi laukaukset: 14
+Vastustajan laukaukset: 8
+
+Joukkueesi taklaukset: 0
+Vastustajan taklaukset: 0
+
+Joukkueesi keltaiset: 0
+Vastustajan keltaiset: 0
+
+Joukkueesi punaiset: 0
+Vastustajan punaiset: 0
+
+Joukkueesi syötöt: 540
+Vastustajan syötöt: 541
+
+
