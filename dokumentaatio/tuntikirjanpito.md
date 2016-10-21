@@ -16,3 +16,4 @@ Päivä | Tunnit | Kuvaus
 12.10.2016 | 5h | Logiikkaa, testausten suunnittelua
 14.10.2016 | 5h | Ohjelmointia
 21.10.2016 | 7h | Ohjelmointia
+21.10.2016 | 30min | Viime hetken muutoksia

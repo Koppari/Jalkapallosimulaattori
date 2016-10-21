@@ -88,6 +88,7 @@ public class GUI extends JPanel implements ActionListener {
 
         luonti.setText("Ei, luo uusi");
 
+        remove(generointi);
         remove(luonti);
         add(luonti);
         add(kylla);
@@ -132,6 +133,7 @@ public class GUI extends JPanel implements ActionListener {
 
         teksti.setCaretPosition(0);
         
+        remove(luonti);
         remove(generointi);
         add(tilastot);
         add(generointi);
@@ -149,13 +151,16 @@ public class GUI extends JPanel implements ActionListener {
         teksti.append("Tässä joukkueesi kokonaistilastoja generoimiesi matsien "
                 + "jälkeen:\n\n" + peli.omaJoukkue.kokonaistilastot()
                 + "\n\nNyt voit luoda uuden satunnaisen joukkueen painamalla "
-                + "alla näkyvää painiketta!");
+                + "Luo uusi joukkue-painiketta!\nJos muutit mielesi ja haluat pelata"
+                + " vielä samalla joukkueella, paina Matsin gene"
+                + "rointi-painiketta ja aloita matsien generointi uudestaan!");
         
         teksti.setCaretPosition(0);
 
         remove(generointi);
         remove(tilastot);
         add(luonti);
+        add(generointi);
         luonti.setText("Luo uusi joukkue");
         revalidate();
         repaint();
