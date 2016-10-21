@@ -5,10 +5,10 @@
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 [Käyttöohjeet](dokumentaatio/käyttöohjeet.md)
 [Testauskuvaus loppupalautukseen](dokumentaatio/testausdokumentaatio.md)
-[CheckStyle](https://cdn.rawgit.com/Koppari/Jalkapallosimulaattori/master/dokumentaatio/site/checkstyle.html)
+[CheckStyle](https://cdn.rawgit.com/Koppari/Jalkapallosimulaattori/master/dokumentaatio/checkstyle/checkstyle.html)
 [Pit](https://cdn.rawgit.com/Koppari/Jalkapallosimulaattori/master/dokumentaatio/pit/index.html)
 [JavaDoc]
-(https://cdn.rawgit.com/Koppari/Jalkapallosimulaattori/master/dokumentaatio/site/apidocs/index.html)
+(https://cdn.rawgit.com/Koppari/Jalkapallosimulaattori/master/dokumentaatio/checkstyle/apidocs/index.html)
 
 
 
