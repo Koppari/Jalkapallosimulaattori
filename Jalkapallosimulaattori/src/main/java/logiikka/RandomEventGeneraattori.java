@@ -112,6 +112,13 @@ public class RandomEventGeneraattori {
 
     }
 
+    /**
+     * Valitsee taklaajan. Mitä puolustavampi pelaaja, sitä isompi
+     * mahdollisuus taklaukseen.
+     *
+     * @param j Joukkue, johon taklaaja kuuluu.
+     * @return Taklaava pelaaja
+     */
     public static Pelaaja taklaus(Joukkue j) {
         if (j.pelaajat.isEmpty()) {
             return null;

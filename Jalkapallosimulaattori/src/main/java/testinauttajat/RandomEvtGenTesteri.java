@@ -10,8 +10,6 @@ import java.util.Random;
  */
 public class RandomEvtGenTesteri {
 
-    private static final Random R = new Random();
-
     public RandomEvtGenTesteri() {
     }
 
@@ -32,7 +30,7 @@ public class RandomEvtGenTesteri {
         }
 
         //jos joukkueet samantasoisia, lähtökoht. >0.5 = j maaliMahdollisuus ja <0.5 = k maaliMahdollisuus
-        double mahdollisuusMaaliin = R.nextDouble();
+        double mahdollisuusMaaliin = 0.5;
 
         //antaa joukkueen j mahdollisuuden tehdä maalin (eli kuinka paljon parempi joukkue on prosentteina)
         double joukkueenParemmuus = joukkueenParemmuus(j, k);
@@ -70,7 +68,7 @@ public class RandomEvtGenTesteri {
      */
     public static String laukaus(JoukkueTesteri j) {
         //käyttää suoraan maalinTekija-metodia koska hyökkäävillä pelaajilla on isompi mahdollisuus laukoa tolppaan
-        return maalinTekija(j) + ", " + "pelaaja joukkueelle " + j.getNimi() + ", " + "laukoi!";
+        return maalinTekija(j, 0.5) + ", " + "pelaaja joukkueelle " + j.getNimi() + ", " + "laukoi!";
     }
 
     /**
@@ -80,27 +78,27 @@ public class RandomEvtGenTesteri {
      * @param j Joukkue, johon maalintekijä kuuluu
      * @return Maalin tekevä pelaaja
      */
-    public static PelaajaTesteri maalinTekija(JoukkueTesteri j) {
+    public static PelaajaTesteri maalinTekija(JoukkueTesteri j, double d) {
         if (j.pelaajat.isEmpty()) {
             return null;
         }
 
         //valitsee maalille tekijän, mitä hyökkäävämpi pelaaja sitä varmemmin maaliMahdollisuus häneltä
-        double maaliMahdollisuus = R.nextDouble();
+        double maaliMahdollisuus = 0.5;
 
-        PelaajaTesteri maalintekija = j.pelaajat.get(R.nextInt(j.pelaajat.size()));
+        PelaajaTesteri maalintekija = j.pelaajat.get(9);
 
-        if (maaliMahdollisuus >= 0.995) {
+        if (d >= 0.995) {
             maalintekija = j.pelaajat.get(0);
         }
-        if (maaliMahdollisuus < 0.995 && maaliMahdollisuus >= 0.84) {
-            maalintekija = j.pelaajat.get(R.ints(1, 1, 4).findFirst().getAsInt());
+        if (d < 0.995 && d >= 0.84) {
+            maalintekija = j.pelaajat.get(1);
         }
-        if (maaliMahdollisuus < 0.84 && maaliMahdollisuus >= 0.50) {
-            maalintekija = j.pelaajat.get(R.ints(1, 5, 8).findFirst().getAsInt());
+        if (d < 0.84 && d >= 0.50) {
+            maalintekija = j.pelaajat.get(5);
         }
-        if (maaliMahdollisuus < 0.50) {
-            maalintekija = j.pelaajat.get(R.ints(1, 9, 10).findFirst().getAsInt());
+        if (d < 0.50) {
+            maalintekija = j.pelaajat.get(9);
         }
 
         //jos käy niin että maalintekijä kentalla = false
@@ -115,27 +113,27 @@ public class RandomEvtGenTesteri {
 
     }
 
-    public static PelaajaTesteri taklaus(JoukkueTesteri j) {
+    public static PelaajaTesteri taklaus(JoukkueTesteri j, double d) {
         if (j.pelaajat.isEmpty()) {
             return null;
         }
 
         //valitsee taklaajan, mitä puolustavampi pelaaja sitä varmemmin taklaus häneltä
-        double taklausMahdollisuus = R.nextDouble();
+        double taklausMahdollisuus = 0.5;
 
-        PelaajaTesteri taklaaja = j.pelaajat.get(R.nextInt(j.pelaajat.size()));
+        PelaajaTesteri taklaaja = j.pelaajat.get(9);
 
-        if (taklausMahdollisuus >= 0.90) {
+        if (d >= 0.90) {
             taklaaja = j.pelaajat.get(0);
         }
-        if (taklausMahdollisuus < 0.90 && taklausMahdollisuus >= 0.50) {
-            taklaaja = j.pelaajat.get(R.ints(1, 1, 4).findFirst().getAsInt());
+        if (d < 0.90 && taklausMahdollisuus >= 0.50) {
+            taklaaja = j.pelaajat.get(1);
         }
-        if (taklausMahdollisuus < 0.50 && taklausMahdollisuus >= 0.10) {
-            taklaaja = j.pelaajat.get(R.ints(1, 5, 8).findFirst().getAsInt());
+        if (d < 0.50 && taklausMahdollisuus >= 0.10) {
+            taklaaja = j.pelaajat.get(5);
         }
-        if (taklausMahdollisuus < 0.10) {
-            taklaaja = j.pelaajat.get(R.ints(1, 9, 10).findFirst().getAsInt());
+        if (d < 0.10) {
+            taklaaja = j.pelaajat.get(9);
         }
 
         if (!taklaaja.kentalla) {

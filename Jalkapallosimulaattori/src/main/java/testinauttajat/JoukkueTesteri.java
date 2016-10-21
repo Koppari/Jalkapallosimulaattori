@@ -15,6 +15,19 @@ public class JoukkueTesteri {
     protected int joukkueenVoima = 0;
     protected String nimi;
 
+    //joukkueen kokonaistilastoja
+    int kokonaisMaalit = 0, kokonaisLaukaukset = 0, kokonaisSyotot = 0,
+            kokonaisTaklaukset = 0, kokonaisKeltaiset = 0, kokonaisPunaiset = 0,
+            voitot = 0, haviot = 0, tasapelit = 0;
+
+    //satunnaisia nimiä joukkueelle
+    private static String[] tiimiNimet = {"Nimble Dinosaurs", "Hard Falcons",
+        "Giant Stallions", "Grim Ghosts", "Wise Wreckers", "Iron Sailors",
+        "Regal Warthogs", "Enchanted Miracles", "Clever Barracudas", "Magic Birds",
+        "Happy Wildlings", "Classic Dodgers", "Magic Striders", "Silver Cobras",
+        "White Penguins", "Storm Wings", "Hard Anacondas", "Swift Ducks",
+        "Gruesome Raiders", "Fabulous Boomers", "Hard Spikes", "Spirit Pumas"};
+
     public JoukkueTesteri() {
     }
 
@@ -23,10 +36,53 @@ public class JoukkueTesteri {
     }
 
     /**
+     * Lisää yhden matsin tilastot joukkueen kokonaistilastoihin.
+     *
+     * @param maalit Kokonaismaalit.
+     * @param laukaukset Kokonaislaukaukset.
+     * @param syotot Kokonaissyötöt.
+     * @param taklaukset Kokonaistaklaukset.
+     * @param keltaiset Kokonaiskeltaiset.
+     * @param punaiset Kokonaispunaiset.
+     */
+    public void tilastojenLisays(int maalit, int laukaukset, int syotot,
+            int taklaukset, int keltaiset, int punaiset) {
+        kokonaisMaalit = kokonaisMaalit + maalit;
+        kokonaisLaukaukset = kokonaisLaukaukset + laukaukset;
+        kokonaisSyotot = kokonaisSyotot + syotot;
+        kokonaisTaklaukset = kokonaisTaklaukset + taklaukset;
+        kokonaisKeltaiset = kokonaisKeltaiset + keltaiset;
+        kokonaisPunaiset = kokonaisPunaiset + punaiset;
+    }
+
+    /**
+     * Palauttaa joukkueen matsien kokonaistilastot.
+     *
+     * @return Kokonaistilastot.
+     */
+    public String kokonaistilastot() {
+        String s = "";
+        s = "Joukkueesi nimi: " + this.getNimi() + "\n"
+                + "Joukkueesi maalit: " + kokonaisMaalit + "\n"
+                + "Joukkueesi laukaukset: " + kokonaisLaukaukset + "\n"
+                + "Joukkueesi syötöt: " + kokonaisSyotot + "\n"
+                + "Joukkueesi taklaukset: " + kokonaisTaklaukset + "\n"
+                + "Joukkueesi keltaiset: " + kokonaisKeltaiset + "\n"
+                + "Joukkueesi punaiset: " + kokonaisPunaiset + "\n"
+                + "Joukkueesi voitot: " + voitot + "\n"
+                + "Joukkueesi häviöt: " + haviot + "\n"
+                + "Joukkueesi tasapelit: " + tasapelit + "\n";
+
+        return s;
+    }
+
+    /**
      * Luo joukkueelle 11 pelaajaa satunnaisilla attribuuteilla.
      *
      */
     public void luoJoukkue() {
+        this.setNimi(tiimiNimet[1]);
+
         pelaajat.add(new PelaajaTesteri(0));
         for (int i = 1; i <= 4; i++) {
             pelaajat.add(new PelaajaTesteri(1));

@@ -30,16 +30,6 @@ public class PeliTesteri {
         this.y = y;
     }
 
-    /*
-    Nämä testattu erikseen.
-    
-    public void matsinGenerointi(Joukkue x, Joukkue y) {
-        
-    }
-    public String matsinLuku() throws FileNotFoundException {
-        
-    }
-     */
     public void tilastojenNollaus() {
         omatMaalit = 0;
         vihollisenMaalit = 0;
@@ -73,9 +63,9 @@ public class PeliTesteri {
         return s;
     }
 
-    public void tiimienLuonti(String omaNimi, String vihollisNimi) {
-        JoukkueTesteri x = new JoukkueTesteri(omaNimi);
-        JoukkueTesteri y = new JoukkueTesteri(vihollisNimi);
+    public void tiimienLuonti() {
+        JoukkueTesteri x = new JoukkueTesteri();
+        JoukkueTesteri y = new JoukkueTesteri();
 
         x.luoJoukkue();
         y.luoJoukkue();

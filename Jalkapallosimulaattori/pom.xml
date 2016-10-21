@@ -70,16 +70,10 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-						<param>logiikka.Joukkue</param>
-						<param>logiikka.RandomEventGeneraattori</param>
-                        <param>testinauttajat.PeliTesteri</param>
-						<param>testinauttajat.PelaajaTesteri</param>
+						<param>testinauttajat.*</param>
 					</targetClasses>
                     <targetTests>
-						<param>logiikka.JoukkueTest</param>
-						<param>logiikka.RandomEventGeneraattoriTest</param>
-                        <param>testinauttajat.PeliTest</param>
-						<param>testinauttajat.PelaajaTest</param>				
+						<param>testinauttajat.*</param>			
                     </targetTests>
                 </configuration>
             </plugin>

@@ -5,10 +5,13 @@ Ohjelmassa valitaan ohjelman luomia satunnaisilla attribuuteilla varustettuja pe
 
 **Käyttäjän toiminnot:** 
 - uuden pelin aloittaminen
-- joukkueen tietojen luonti (to-do)
-- pelaajien valinta
-- joukkueen kokonaistilastojen tarkistus
+- satunnaisesti luodun joukkueen valinta
+- matsien generointi
+- joukkueen kokonaistilastojen tarkistus lopussa
 - uusien joukkueiden luonti
+
+**Rakennekuvaus:**
+Main-luokka luo ensin Peli-olion joka laitetaan uuden luodun GUI-olion sisälle. GUI-oliolla luodaan sitten pelille käyttöliittymä. Peli on ohjelman keskeisin luokka, sillä se on vastuussa pelin tapahtumien generoimisesta, sen tilastoista ja siihen liittyvien joukkueiden ilmoittamisesta. Peliin kuuluu Joukkueita joihin taas kuuluu Pelaajia. TiedostonHoitaja hoitaa matsireporttien tekemisen omassa luokassaan. RandomEventGeneraattori laskee esimerkiksi joukkueiden paremmuuksia ja kertoo Pelille ketkä pelaajat ja kumpi joukkue tekevät mitäkin.
 
 ![Luokkakaavio](https://github.com/Koppari/Jalkapallosimulaattori/raw/master/dokumentaatio/lkaavio2.png?raw=true)
 - luokan RandomEventGeneraattori metodeissa viitataan suoraan Joukkue- ja Pelaaja-luokan ilmentymiin

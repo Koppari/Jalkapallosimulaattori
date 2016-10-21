@@ -13,7 +13,7 @@ public class PeliTest {
     @Before
     public void setUp() {
         p = new PeliTesteri();
-        p.tiimienLuonti("A", "B");
+        p.tiimienLuonti();
     }
 
     @Test
@@ -60,9 +60,9 @@ public class PeliTest {
     @Test
     public void tiimienLuontiToimii() {
         PeliTesteri p = new PeliTesteri();
-        p.tiimienLuonti("Eka", "Toka");
-        assertEquals(p.x.getNimi(), "Eka");
-        assertEquals(p.y.getNimi(), "Toka");
+        p.tiimienLuonti();
+        assertEquals(p.x.getNimi(), "Hard Falcons");
+        assertEquals(p.y.getNimi(), "Hard Falcons");
     }
 
     @Test

@@ -1,0 +1,4 @@
+**Testauksesta:** 
+Ohjelma perustuu pitkälti randomeihin eventteihin joten sen edetessä testikattavuudesta ja mutaatioiden testaamisesta tuli hankalaa (mutaatiokattavuus taisi jossain palautuksessa olla luokkaa 10%). Olisin voinut hoitaa testauksen toki viikon 5 palautteessa mainituilla dekoroinnilla ja riippuvuuksien injektoinnilla mutta koska aloitin testiluokkien tekemisen ennen palautteen lukemista päätin jatkaa näin. 
+
+Kopsasin siis nuo logiikan testausta tarvitsevat luokat Testeri-luokkiin (omaan pakettiinsa) jotka testaavat alkuperäisiä luokkia siten, että niistä on poistettu kaikki randomit elementit. Metodeihin joissa on sisäisiä random-doubleja on laitettu double-parametrejä joilla "randomin" numeron voi itse valita testausta varten. 

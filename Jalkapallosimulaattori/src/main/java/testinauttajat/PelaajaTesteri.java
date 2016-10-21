@@ -30,7 +30,14 @@ public class PelaajaTesteri {
     protected boolean kentalla = true;
 
     //nimiä pelaajille, väliaikainen
-    private static String[] names = {"Joni", "Petteri", "Jorma", "Mauri", "Jaakko", "Aatu", "Akseli", "Olavi", "Kalevi", "Paavo", "Roope"};
+    private static String[] names = {"Mikey Stenberg", "Alex Daniel", "Ambrozije Parodi",
+        "Kliment Rhee", "Grozdan Megalos", "Symeonu Svendsen", "Enitan Tos",
+        "Yaakov Van Amersvoort", "Tristan Derricks", "Terrell Salcedo",
+        "Eadwulf Romero", "Vlassis Skala", "Giedrius Suero", "Lalit Hambledon",
+        "Haldor Innocenti", "Qasim Lindsay", "Vasilios Horn", "Eirenaios Huang",
+        "Adebayo De Vries", "Jaron Bajusz", "Christianus McWilliam",
+        "Slava Einarsson", "Baldassare Marek", "Titus Rojo", "Timon Yukimura",
+        "Alexander Finn"};
 
     public PelaajaTesteri() {
         this(3);

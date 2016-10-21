@@ -13,7 +13,8 @@ import logiikka.Peli;
  */
 public class GUI extends JPanel implements ActionListener {
 
-    protected JButton luonti, kylla, generointi;
+    protected JButton luonti, kylla, generointi, tilastot;
+    protected JDialog tilastoja;
     protected JTextArea teksti;
     private final static String N = "\n";
     private Peli peli;
@@ -31,10 +32,14 @@ public class GUI extends JPanel implements ActionListener {
         generointi = new JButton("Matsin generointi");
         generointi.addActionListener(this);
 
+        tilastot = new JButton("Lopeta peli");
+        tilastot.addActionListener(this);
+        
         teksti = new JTextArea(5, 20);
         teksti.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(teksti);
-        teksti.setText("Tervetuloa valitsemaan satunnaisesti generoitua joukkuetta ja katsomaan miten se pärjää vihollistiimiä vastaan!"
+        teksti.setText("Tervetuloa valitsemaan satunnaisesti generoitua "
+                + "joukkuetta ja katsomaan miten se pärjää vihollistiimiä vastaan!"
                 + " \nLuo joukkue painamalla luonti-näppäintä!");
 
         GridBagConstraints c = new GridBagConstraints();
@@ -63,6 +68,10 @@ public class GUI extends JPanel implements ActionListener {
         if (evt.getSource() == generointi) {
             matsinGenerointi();
         }
+        
+        if (evt.getSource() == tilastot) {
+            tilastot();
+        }
 
     }
 
@@ -72,9 +81,9 @@ public class GUI extends JPanel implements ActionListener {
     public void luonti() {
         teksti.setText("");
 
-        peli.tiimienLuonti("A", "B");
-        teksti.append("Tässä satunnaisesti luotu joukkueesi. Voit halutessasi luoda uuden.\n\n" + "Joukkueen kokonaisvoima: "
-                + peli.x.getJoukkueenVoima() + "\n\n" + peli.x.printPelaajat() + "Oletko tyytyväinen joukkueeseesi?");
+        peli.tiimienLuonti();
+        teksti.append("Tässä satunnaisesti luotu joukkueesi. Voit halutessasi luoda uuden.\n\nJoukkueen nimi: " + peli.omaJoukkue.getNimi() + "\n\nJoukkueen kokonaisvoima: "
+                + peli.omaJoukkue.getJoukkueenVoima() + "\n\n" + peli.omaJoukkue.printPelaajat() + "Oletko tyytyväinen joukkueeseesi?");
         teksti.setCaretPosition(0);
 
         luonti.setText("Ei, luo uusi");
@@ -92,8 +101,8 @@ public class GUI extends JPanel implements ActionListener {
     public void kylla() {
         teksti.setText("");
 
-        teksti.append("Olet valinnut joukkueesi! Joukkueesi kokonaisvoima on " + peli.x.getJoukkueenVoima() + " verrattuna vastustajan "
-                + peli.y.getJoukkueenVoima() + "!\n\nTässä vielä joukkueesi:\n\n" + peli.x.printPelaajat() + "Vastustajan joukkue:\n\n" + peli.y.printPelaajat()
+        teksti.append("Olet valinnut joukkueesi! Joukkueesi kokonaisvoima on " + peli.omaJoukkue.getJoukkueenVoima() + " verrattuna vastustajan "
+                + peli.vihollisJoukkue.getJoukkueenVoima() + "!\n\nTässä vielä joukkueesi:\n\n" + peli.omaJoukkue.printPelaajat() + "Vastustajan joukkue:\n\n" + peli.vihollisJoukkue.printPelaajat()
                 + "Paina matsin generointi-nappia ja peli voi alkaa!\n\n");
 
         teksti.setCaretPosition(0);
@@ -112,14 +121,42 @@ public class GUI extends JPanel implements ActionListener {
         teksti.setText("");
         peli.matsinGenerointi();
         try {
-            teksti.append(peli.x.getNimi() + "-" + peli.y.getNimi() + "\n" + peli.matsinLuku() + "\n");
+            teksti.append(peli.omaJoukkue.getNimi() + "-" + peli.vihollisJoukkue.getNimi() 
+                    + "\n" + peli.matsinLuku() + "\nVoit joko generoida "
+                    + "uuden matsin tai lopettaa tällä joukkueella pelaamisen.\n");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        peli.tilastojenTallennus(peli.omaJoukkue);
         peli.tilastojenNollaus();
+
+        teksti.setCaretPosition(0);
+        
+        remove(generointi);
+        add(tilastot);
+        add(generointi);
+    
+        revalidate();
+        repaint();
+    }
+
+    /**
+     * Uuden joukkueen luonti, vanhan joukkueen tilastot.
+     */
+    public void tilastot() {
+        teksti.setText("");
+        
+        teksti.append("Tässä joukkueesi kokonaistilastoja generoimiesi matsien "
+                + "jälkeen:\n\n" + peli.omaJoukkue.kokonaistilastot()
+                + "\n\nNyt voit luoda uuden satunnaisen joukkueen painamalla "
+                + "alla näkyvää painiketta!");
         
         teksti.setCaretPosition(0);
 
+        remove(generointi);
+        remove(tilastot);
+        add(luonti);
+        luonti.setText("Luo uusi joukkue");
         revalidate();
         repaint();
     }

@@ -26,15 +26,39 @@ public class Pelaaja {
     protected int kortit = 0;
     protected boolean kentalla = true;
 
-    //nimiä pelaajille, väliaikainen
-    private static String[] names = {"Joni", "Petteri", "Jorma", "Mauri", "Jaakko", "Aatu", "Akseli", "Olavi", "Kalevi", "Paavo", "Roope"};
+    //satunnaisia nimiä pelaajille
+    private static String[] nimet = {"Mikey Stenberg", "Alex Daniel", "Ambrozije Parodi",
+        "Kliment Rhee", "Grozdan Megalos", "Symeonu Svendsen", "Enitan Tos",
+        "Yaakov Van Amersvoort", "Tristan Derricks", "Terrell Salcedo",
+        "Eadwulf Romero", "Vlassis Skala", "Giedrius Suero", "Lalit Hambledon",
+        "Haldor Innocenti", "Qasim Lindsay", "Vasilios Horn", "Eirenaios Huang",
+        "Adebayo De Vries", "Jaron Bajusz", "Christianus McWilliam",
+        "Slava Einarsson", "Baldassare Marek", "Titus Rojo", "Timon Yukimura",
+        "Alexander Finn", "Jian Malone", "Calum Myles", "Plutarch Groves",
+        "Alvar Leonardson", "Anupam Couture", "Khalid Yap", "Daniel Midgley",
+        "Lars Nichols", "Babak Spini", "Tiriaq Beaufort", "Hartwig Mihov",
+        "Efe Tifft", "Lochan Kelley", "Yosyp Sergeant", "Ricki Snijders",
+        "Irakli Petit", "Uzziel Mendelsohn", "Seymour Ewart", "Stuart Rocha",
+        "Athaulf Mikkelsen", "Alfarr Santillian", "Siddharta Schäfer",
+        "Azad Daly", "Hugubert Victor", "Anwer Zhang", "Micheal Raske",
+        "Morgan Mathiasen", "Amariah Kunkle", "Richard Darzi", "Briscoe Knef",
+        "Kaipo Lawson", "Derek Derichs", "Jaydon Nagi", "Gulbahar Leccese",
+        "Fedor Peláez", "Tyriq Battle", "Shafaqat Coenen", "Cadmus De Groot",
+        "Zaki Markó", "Phanouel Zdunowski", "Soheil Corna", "Linus Meyer",
+        "Ade Matějka", "Mamadou Sternberg", "Åsmund Hepburn", "Sweeney Klimy",
+        "Mahomet Lombardi", "Jodoc Lazzari", "Guillaume Speight", "Parris Fattore",
+        "Irvine Van Laar", "Branimir Kárpáti", "Yahui Forst", "Abd al-Rashid Illés",
+        "Pyotr Van Veenen", "Burak Dempsey", "Pali King", "Mattin Jó", "Raimund Lengyel",
+        "Norbert Stern", "Fergus Naldi", "Aleks Reynders", "Ariston Tarr",
+        "Konrad Merlo", "Silvio Giffard", "Efemena Salvage", "Shakil Lang"
+    };
 
     public Pelaaja() {
         this(random.nextInt(4));
     }
 
     public Pelaaja(int tyyppi) {
-        this(names[random.nextInt(10)], tyyppi);
+        this(nimet[random.nextInt(93)], tyyppi);
     }
 
     public Pelaaja(String nimi, int tyyppi) {

@@ -8,10 +8,10 @@ import java.util.Random;
  */
 public class Peli {
 
-    private static final Random R = new Random();
-    private static final RandomEventGeneraattori REG = new RandomEventGeneraattori();
+    private static final Random RANDOM = new Random();
+    private static final RandomEventGeneraattori RANDOMEVENTGEN = new RandomEventGeneraattori();
     private TiedostonHoitaja tiedostonHoitaja = new TiedostonHoitaja(this);
-    public Joukkue x, y;
+    public Joukkue omaJoukkue, vihollisJoukkue;
     protected String s = "";
 
     //tilastoja
@@ -26,8 +26,8 @@ public class Peli {
     }
 
     public Peli(Joukkue x, Joukkue y) {
-        this.x = x;
-        this.y = y;
+        this.omaJoukkue = x;
+        this.vihollisJoukkue = y;
     }
 
     /**
@@ -35,19 +35,38 @@ public class Peli {
      */
     public void matsinGenerointi() {
         tiedostonHoitaja.tiedostonGenerointi();
-        this.x.pelaajatKentalle();
-        this.y.pelaajatKentalle();
-        this.x.joukkueenVoimaLasku();
-        this.y.joukkueenVoimaLasku();
+        
+        if (omatMaalit > vihollisenMaalit) {
+            omaJoukkue.haviot++;
+        } else if (omatMaalit < vihollisenMaalit) {
+            omaJoukkue.voitot++;
+        } else {
+            omaJoukkue.tasapelit++;
+        }
+        
+        this.omaJoukkue.pelaajatKentalle();
+        this.vihollisJoukkue.pelaajatKentalle();
+        this.omaJoukkue.joukkueenVoimaLasku();
+        this.vihollisJoukkue.joukkueenVoimaLasku();
     }
 
     /**
      * Lukee matsin tapahtumat.
      *
      * @return Matsin tapahtumat.
+     * @throws java.io.FileNotFoundException
      */
     public String matsinLuku() throws FileNotFoundException {
         return tiedostonHoitaja.matsinLuku();
+    }
+
+    /**
+     * Lisää joukkueen matsin tilastot joukkueen kokonaistilastoihin.
+     * @param j Joukkue jonka tilastot halutaan selville.
+     */
+    public void tilastojenTallennus(Joukkue j) {
+        j.tilastojenLisays(omatMaalit, omatLaukaukset, omatSyotot,
+                omatTaklaukset, omatKeltaiset, omatPunaiset);
     }
 
     /**
@@ -95,31 +114,28 @@ public class Peli {
      * Luo satunnaiset joukkueet ja tallentaa ne erilliseen ArrayListiin.
      *
      *
-     * @param omaNimi Oman joukkuuen nimi.
-     * @param vihollisNimi Vastustajan joukkueen nimi.
-     *
      */
-    public void tiimienLuonti(String omaNimi, String vihollisNimi) {
-        Joukkue x = new Joukkue(omaNimi);
-        Joukkue y = new Joukkue(vihollisNimi);
+    public void tiimienLuonti() {
+        Joukkue x = new Joukkue();
+        Joukkue y = new Joukkue();
 
         x.luoJoukkue();
         y.luoJoukkue();
-
-        this.x = x;
-        this.y = y;
+        
+        this.omaJoukkue = x;
+        this.vihollisJoukkue = y;
     }
 
     /**
      * Luo eventtejä matsigeneraattorille.
      *
      * @param x Oma joukkue
-     * @param y Vs. joukkue
+     * @param y Vihollisjoukkue
      * @throws Exception
      */
     public void eventGenerointi(Joukkue x, Joukkue y) throws Exception {
         double event = 0;
-        event = R.nextDouble();
+        event = RANDOM.nextDouble();
 
         syotto();
 
@@ -144,32 +160,34 @@ public class Peli {
     /**
      * Katsoo onko maali oma vai vastustajan.
      *
+     * @return Maalintekijä
      * @throws Exception
      */
     public String maali() throws Exception {
-        boolean maali = REG.maaliMahdollisuus(x, y);
+        boolean maali = RANDOMEVENTGEN.maaliMahdollisuus(omaJoukkue, vihollisJoukkue);
         if (maali) {
             omatLaukaukset++;
             omatMaalit++;
-            return "\n" + REG.maalinTekija(x) + ", teki maalin joukkueelle " + x.getNimi() + "!";
+            return "\n" + RANDOMEVENTGEN.maalinTekija(omaJoukkue) + ", teki maalin joukkueelle " + omaJoukkue.getNimi() + "!";
         } else {
             vihollisenLaukaukset++;
             vihollisenMaalit++;
-            return "\n" + REG.maalinTekija(x) + ", teki maalin joukkueelle " + y.getNimi() + "!";
+            return "\n" + RANDOMEVENTGEN.maalinTekija(omaJoukkue) + ", teki maalin joukkueelle " + vihollisJoukkue.getNimi() + "!";
         }
     }
 
     /**
      * Katsoo oliko tolppaan laukaus oma vai vastustajan.
+     * @return Tolppalaukaus
      */
     public String tolppa() {
-        double tolppaMahdollisuus = R.nextDouble();
-        if (tolppaMahdollisuus < REG.joukkueenParemmuus(x, y)) {
+        double tolppaMahdollisuus = RANDOM.nextDouble();
+        if (tolppaMahdollisuus < RANDOMEVENTGEN.joukkueenParemmuus(omaJoukkue, vihollisJoukkue)) {
             omatLaukaukset++;
-            return "\n" + REG.laukaus(x) + " Se osui tolppaan!";
+            return "\n" + RANDOMEVENTGEN.laukaus(omaJoukkue) + " Se osui tolppaan!";
         } else { //y laukoo tolppaan
             vihollisenLaukaukset++;
-            return "\n" + REG.laukaus(y) + " Se osui tolppaan!";
+            return "\n" + RANDOMEVENTGEN.laukaus(vihollisJoukkue) + " Se osui tolppaan!";
         }
     }
 
@@ -177,57 +195,59 @@ public class Peli {
      * Antaa joukkueelle syöttöjä per peliminuutti.
      */
     public void syotto() {
-        omatSyotot = omatSyotot + (R.nextInt(3) + 5);
-        vihollisenSyotot = vihollisenSyotot + (R.nextInt(3) + 5);
+        omatSyotot = (int) (omatSyotot + (RANDOM.nextInt(3) + (omaJoukkue.joukkueenVoima * 0.0035)));
+        vihollisenSyotot = (int) (vihollisenSyotot + (RANDOM.nextInt(3) + (vihollisJoukkue.joukkueenVoima * 0.0035)));
     }
 
     /**
      * Katsoo oliko laukaus oma vai vastustajan.
+     * @return Laukaus
      */
     public String laukaus() {
-        double laukausMahdollisuus = R.nextDouble();
-        if (laukausMahdollisuus < REG.joukkueenParemmuus(x, y)) {
+        double laukausMahdollisuus = RANDOM.nextDouble();
+        if (laukausMahdollisuus < RANDOMEVENTGEN.joukkueenParemmuus(omaJoukkue, vihollisJoukkue)) {
             omatLaukaukset++;
-            return "\n" + REG.laukaus(x) + " Ohi meni!";
+            return "\n" + RANDOMEVENTGEN.laukaus(omaJoukkue) + " Ohi meni!";
         } else {
             vihollisenLaukaukset++;
-            return "\n" + REG.laukaus(y) + " Ohi meni!";
+            return "\n" + RANDOMEVENTGEN.laukaus(vihollisJoukkue) + " Ohi meni!";
         }
     }
 
     /**
      * Katsoo oliko taklaus oma vai vastustajan.
+     * @return Taklaus
      */
     public String taklaus() {
         String s = "";
         //lisärandomiuden vuoksi vielä toinen random-rolli:
-        double r = R.nextDouble();
+        double r = RANDOM.nextDouble();
         Pelaaja taklaaja = null;
 
         if (r < 0.04) {
-            double taklausMahdollisuus = R.nextDouble();
-            if (taklausMahdollisuus < REG.joukkueenParemmuus(x, y)) {
+            double taklausMahdollisuus = RANDOM.nextDouble();
+            if (taklausMahdollisuus < RANDOMEVENTGEN.joukkueenParemmuus(omaJoukkue, vihollisJoukkue)) {
                 omatTaklaukset++;
                 omatKeltaiset++;
-                taklaaja = REG.taklaus(x);
+                taklaaja = RANDOMEVENTGEN.taklaus(omaJoukkue);
                 s = s + "\n" + taklaaja + ", taklasi pahasti ja sai" + keltainenVaiPunainen(taklaaja) + " kortin!";
                 if (taklaaja.kortit >= 2) {
                     omatPunaiset++;
                     s = s + " Hän on ulkona pelistä!";
                     taklaaja.pelaajaUlosKentalta();
-                    x.joukkueenVoimaLasku();
+                    omaJoukkue.joukkueenVoimaLasku();
                 }
             }
-            if (taklausMahdollisuus > REG.joukkueenParemmuus(x, y)) {
+            if (taklausMahdollisuus > RANDOMEVENTGEN.joukkueenParemmuus(omaJoukkue, vihollisJoukkue)) {
                 vihollisenTaklaukset++;
                 vihollisenKeltaiset++;
-                taklaaja = REG.taklaus(y);
+                taklaaja = RANDOMEVENTGEN.taklaus(vihollisJoukkue);
                 s = s + "\n" + taklaaja + ", taklasi pahasti ja sai" + keltainenVaiPunainen(taklaaja) + " kortin!";
                 if (taklaaja.kortit >= 2) {
                     vihollisenPunaiset++;
                     s = s + " Hän on ulkona pelistä!";
                     taklaaja.pelaajaUlosKentalta();
-                    y.joukkueenVoimaLasku();
+                    vihollisJoukkue.joukkueenVoimaLasku();
                 }
             }
         }
@@ -243,7 +263,7 @@ public class Peli {
      */
     public String keltainenVaiPunainen(Pelaaja p) {
         String s = "";
-        double r = R.nextDouble();
+        double r = RANDOM.nextDouble();
 
         if (r < 0.92) {
             s = " keltaisen";

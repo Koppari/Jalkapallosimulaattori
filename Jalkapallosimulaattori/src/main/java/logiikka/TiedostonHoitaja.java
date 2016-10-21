@@ -8,10 +8,10 @@ import java.io.*;
  */
 public class TiedostonHoitaja {
 
-    private Peli p;
+    private Peli peli;
 
     public TiedostonHoitaja(Peli peli) {
-        this.p = peli;
+        this.peli = peli;
     }
 
     /**
@@ -23,14 +23,14 @@ public class TiedostonHoitaja {
         try {
             PrintWriter tiedostokirjoitin = new PrintWriter("matsi.txt");
             for (int i = 0; i <= 90; i++) {
-                p.s = p.omatMaalit + "-" + p.vihollisenMaalit + ", " + i + " min: ";
-                p.eventGenerointi(p.x, p.y);
-                tiedostokirjoitin.println(p.s);
+                peli.s = peli.omatMaalit + "-" + peli.vihollisenMaalit + ", " + i + " min: ";
+                peli.eventGenerointi(peli.omaJoukkue, peli.vihollisJoukkue);
+                tiedostokirjoitin.println(peli.s);
             }
-
-            tiedostokirjoitin.println("Peli päättyi " + p.omatMaalit + "-" + p.vihollisenMaalit + "!");
+            
+            tiedostokirjoitin.println("Peli päättyi " + peli.omatMaalit + "-" + peli.vihollisenMaalit + "!");
             tiedostokirjoitin.println("\nTilastoja:\n");
-            tiedostokirjoitin.println(p.tilastot());
+            tiedostokirjoitin.println(peli.tilastot());
             tiedostokirjoitin.close();
 
         } catch (Exception e) {
@@ -43,6 +43,7 @@ public class TiedostonHoitaja {
      *
      *
      * @return Matsin tapahtumat.
+     * @throws java.io.FileNotFoundException
      */
     public String matsinLuku() throws FileNotFoundException {
         String s = "";
